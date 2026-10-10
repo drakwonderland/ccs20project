@@ -121,9 +121,22 @@ public class test {
         String choice = scanner.nextLine().trim();
 
         if (choice.equals("1") || choice.equalsIgnoreCase("female")) {
+            System.out.println("\n=================================================");
+            System.out.println("               GENDER SELECTION COMPLETE           ");
+            System.out.println("=================================================");
             System.out.println("You have chosen FEMALE as your gender.");
+            System.out.println("-------------------------------------------------");
+            System.out.println("=================================================");
+            System.out.println("\nGender succesfully assigned!");
+        
         } else if (choice.equals("2") || choice.equalsIgnoreCase("male")) {
+            System.out.println("\n=================================================");
+            System.out.println("               GENDER SELECTION COMPLETE           ");
+            System.out.println("=================================================");
             System.out.println("You have chosen MALE as your gender.");
+            System.out.println("-------------------------------------------------");
+            System.out.println("=================================================");
+            System.out.println("\nGender succesfully assigned!");
         } else {
             System.out.println("Invalid selection. Please choose 1 or 2");
         }
@@ -133,6 +146,13 @@ public class test {
         System.out.println("\n---------------- CHARACTER NAME ----------------");
         System.out.print("Enter character name: ");
         String name = scanner.nextLine();
+        System.out.println("\n=================================================");
+        System.out.println("               CHARACTER NAME COMPLETE           ");
+        System.out.println("=================================================");
+        System.out.println("You have chosen" + name + "as your name.");
+        System.out.println("-------------------------------------------------");
+        System.out.println("=================================================");
+        System.out.println("\nName saved succesfully!");
 
     }
 }
