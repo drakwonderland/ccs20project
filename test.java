@@ -38,6 +38,7 @@ public class test {
         System.out.println("Status: Role and HP successfully assigned!");
         System.out.println("=================================================");
         displaySummary();
+        chooseWeapon();
     }
 
     public static boolean startMenu() {
@@ -174,5 +175,68 @@ public class test {
         System.out.println("-------------------------------------------------");
         System.out.println("Status  : Character created successfully!");
         System.out.println("=================================================");
+    }
+
+    public static void chooseWeapon() {
+        while (true) {
+            System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
+
+            if (playerRole.equals("Fighter")) {
+                System.out.println("[1] Bow");
+                System.out.println("[2] Sword");
+                System.out.println("[3] Crossbow");
+
+            } else if (playerRole.equals("Tank")) {
+                System.out.println("[1] Sword and Shield");
+                System.out.println("[2] Warhammer");
+
+            } else if (playerRole.equals("Mage")) {
+                System.out.println("[1] Ice Wand");
+                System.out.println("[2] Fire Staff");
+            }
+
+            System.out.print("Enter your choice: ");
+            String choice = scanner.nextLine().trim();
+
+            if (playerRole.equals("Fighter")) {
+                if (choice.equals("1")) {
+                    System.out.println("Bow added to inventory.");
+                    break;
+                } else if (choice.equals("2")) {
+                    System.out.println("Sword added to inventory.");
+                    break;
+                } else if (choice.equals("3")) {
+                    System.out.println("Crossbow added to inventory.");
+                    break;
+                } else {
+                    System.out.println("Invalid Option. Try again.");
+                }
+
+            } else if (playerRole.equals("Tank")) {
+                if (choice.equals("1")) {
+                    System.out.println("Sword and Shield added to inventory.");
+                    break;
+                } else if (choice.equals("2")) {
+                    System.out.println("Warhammer added to inventory.");
+                    break;
+                } else if (choice.equals("3")) {
+                    System.out.println("Polearm added to inventory.");
+                    break;
+                } else {
+                    System.out.println("Invalid Option. Try again.");
+                }
+
+            } else if (playerRole.equals("Mage")) {
+                if (choice.equals("1")) {
+                    System.out.println("Ice wand added to inventory.");
+                    break;
+                } else if (choice.equals("2")) {
+                    System.out.println("Fire staff added to inventory.");
+                    break;
+                } else {
+                    System.out.println("Invalid Option. Try again.");
+                }
+            }
+        }
     }
 }
