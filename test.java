@@ -24,7 +24,8 @@ public class test {
         treehouseScene();
 
         chooseRole();
-
+        chooseGender();
+        inputName();
         System.out.println("\n=================================================");
         System.out.println("               ROLE SELECTION COMPLETE           ");
         System.out.println("=================================================");
@@ -128,7 +129,7 @@ public class test {
             System.out.println("-------------------------------------------------");
             System.out.println("=================================================");
             System.out.println("\nGender succesfully assigned!");
-        
+
         } else if (choice.equals("2") || choice.equalsIgnoreCase("male")) {
             System.out.println("\n=================================================");
             System.out.println("               GENDER SELECTION COMPLETE           ");
