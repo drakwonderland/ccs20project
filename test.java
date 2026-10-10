@@ -6,6 +6,8 @@ public class test {
 
     // Player Role and Health
     static String playerRole = "";
+    static String playerName = "";
+    static String playerGender = "";
     static int playerHp = 0;
     static int playerMaxHp = 0;
 
@@ -26,6 +28,7 @@ public class test {
         chooseRole();
         chooseGender();
         inputName();
+
         System.out.println("\n=================================================");
         System.out.println("               ROLE SELECTION COMPLETE           ");
         System.out.println("=================================================");
@@ -34,6 +37,7 @@ public class test {
         System.out.println("-------------------------------------------------");
         System.out.println("Status: Role and HP successfully assigned!");
         System.out.println("=================================================");
+        displaySummary();
     }
 
     public static boolean startMenu() {
@@ -129,6 +133,7 @@ public class test {
             System.out.println("-------------------------------------------------");
             System.out.println("=================================================");
             System.out.println("\nGender succesfully assigned!");
+            playerGender = "Female";
 
         } else if (choice.equals("2") || choice.equalsIgnoreCase("male")) {
             System.out.println("\n=================================================");
@@ -138,6 +143,7 @@ public class test {
             System.out.println("-------------------------------------------------");
             System.out.println("=================================================");
             System.out.println("\nGender succesfully assigned!");
+            playerGender = "Male";
         } else {
             System.out.println("Invalid selection. Please choose 1 or 2");
         }
@@ -146,14 +152,27 @@ public class test {
     public static void inputName() {
         System.out.println("\n---------------- CHARACTER NAME ----------------");
         System.out.print("Enter character name: ");
-        String name = scanner.nextLine();
+        playerName = scanner.nextLine().trim();
         System.out.println("\n=================================================");
         System.out.println("               CHARACTER NAME COMPLETE           ");
         System.out.println("=================================================");
-        System.out.println("You have chosen" + name + "as your name.");
+        System.out.println("You have chosen" + playerName + "as your name.");
         System.out.println("-------------------------------------------------");
         System.out.println("=================================================");
         System.out.println("\nName saved succesfully!");
 
+    }
+
+    public static void displaySummary() {
+        System.out.println("\n=================================================");
+        System.out.println("               CHARACTER SUMMARY                 ");
+        System.out.println("=================================================");
+        System.out.println("Name    : " + playerName);
+        System.out.println("Gender  : " + playerGender);
+        System.out.println("Role    : " + playerRole);
+        System.out.println("Base HP : " + playerHp + " / " + playerMaxHp);
+        System.out.println("-------------------------------------------------");
+        System.out.println("Status  : Character created successfully!");
+        System.out.println("=================================================");
     }
 }
