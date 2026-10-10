@@ -38,7 +38,7 @@ public class test {
     public static boolean startMenu() {
         while (true) {
             System.out.println("---------------- START MENU ----------------");
-            System.out.println("[1] Continue");
+            System.out.println("[1] NEXT");
             System.out.println("[2] Exit");
             System.out.print("Enter choice (1 or 2): ");
             String choice = scanner.nextLine().trim();
