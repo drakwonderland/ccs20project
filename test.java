@@ -112,4 +112,26 @@ public class test {
         System.out.print("Press [ENTER] to continue...");
         scanner.nextLine();
     }
+
+     public static void chooseGender(){
+        System.out.println("\n---------------- CHOOSE YOUR GENDER ----------------");
+        System.out.pritnln("[1] Female");
+        System.out.println("[2] Male");
+        System.out.print("Enter your choice (1-2): ");
+        String choice = scanner.nextLine().trim();
+
+        if (choice.equals("1") || choice.equalsIgnoreCase("female")) {
+            System.out.println("You have chosen FEMALE as your gender.");
+        } else if (choice.equals("1") || choice.equalsIgnoreCase("male")){
+            System.out.println("You have chosen MALE as your gender.");
+        } else {
+            System.out.println("Invalid selection. Please choose 1 or 2");
+        }
+
+    public static void inputName(){
+        System.out.println("\n---------------- CHARACTER NAME ----------------");
+        System.out.print("Enter character name: ");
+        String name = sc.nextLine();
+        
+    }
 }
