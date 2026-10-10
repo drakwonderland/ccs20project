@@ -71,7 +71,7 @@ public class test {
         System.out.println();
         System.out.println("You wear the necklace around your neck.");
         System.out.println("Suddenly, a glowing interface appears before your eyes:");
-        System.out.println("              [ CHOOSE YOUR ROLE ]               ");
+        System.out.println("\n              [ CHOOSE YOUR ROLE ]               ");
         System.out.println("-------------------------------------------------");
         pause();
     }
