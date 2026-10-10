@@ -38,6 +38,7 @@ public class test {
         System.out.println("Status: Role and HP successfully assigned!");
         System.out.println("=================================================");
         displaySummary();
+        confirmCharacter();
         chooseWeapon();
     }
 
@@ -120,48 +121,37 @@ public class test {
     }
 
     public static void chooseGender() {
-        System.out.println("\n---------------- CHOOSE YOUR GENDER ----------------");
-        System.out.println("[1] Female");
-        System.out.println("[2] Male");
-        System.out.print("Enter your choice (1-2): ");
-        String choice = scanner.nextLine().trim();
+        while (true) {
+            System.out.println("\n---------------- CHOOSE YOUR GENDER ----------------");
+            System.out.println("[1] Female");
+            System.out.println("[2] Male");
+            System.out.print("Enter your choice (1-2): ");
+            String choice = scanner.nextLine().trim();
 
-        if (choice.equals("1") || choice.equalsIgnoreCase("female")) {
-            System.out.println("\n=================================================");
-            System.out.println("               GENDER SELECTION COMPLETE           ");
-            System.out.println("=================================================");
-            System.out.println("You have chosen FEMALE as your gender.");
-            System.out.println("-------------------------------------------------");
-            System.out.println("=================================================");
-            System.out.println("\nGender succesfully assigned!");
-            playerGender = "Female";
-
-        } else if (choice.equals("2") || choice.equalsIgnoreCase("male")) {
-            System.out.println("\n=================================================");
-            System.out.println("               GENDER SELECTION COMPLETE           ");
-            System.out.println("=================================================");
-            System.out.println("You have chosen MALE as your gender.");
-            System.out.println("-------------------------------------------------");
-            System.out.println("=================================================");
-            System.out.println("\nGender succesfully assigned!");
-            playerGender = "Male";
-        } else {
-            System.out.println("Invalid selection. Please choose 1 or 2");
+            if (choice.equals("1") || choice.equalsIgnoreCase("female")) {
+                playerGender = "Female";
+                break;
+            } else if (choice.equals("2") || choice.equalsIgnoreCase("male")) {
+                playerGender = "Male";
+                break;
+            } else {
+                System.out.println("Invalid selection. Please choose 1 or 2.");
+            }
         }
+        System.out.println("\nGender assigned: " + playerGender);
     }
 
     public static void inputName() {
         System.out.println("\n---------------- CHARACTER NAME ----------------");
         System.out.print("Enter character name: ");
         playerName = scanner.nextLine().trim();
-        System.out.println("\n=================================================");
-        System.out.println("               CHARACTER NAME COMPLETE           ");
-        System.out.println("=================================================");
-        System.out.println("You have chosen" + playerName + "as your name.");
-        System.out.println("-------------------------------------------------");
-        System.out.println("=================================================");
-        System.out.println("\nName saved succesfully!");
 
+        while (playerName.isEmpty()) {
+            System.out.print("Name cannot be empty. Enter character name: ");
+            playerName = scanner.nextLine().trim();
+        }
+
+        System.out.println("\nName assigned: " + playerName);
     }
 
     public static void displaySummary() {
@@ -172,9 +162,34 @@ public class test {
         System.out.println("Gender  : " + playerGender);
         System.out.println("Role    : " + playerRole);
         System.out.println("Base HP : " + playerHp + " / " + playerMaxHp);
-        System.out.println("-------------------------------------------------");
-        System.out.println("Status  : Character created successfully!");
         System.out.println("=================================================");
+    }
+
+    public static void confirmCharacter() {
+        while (true) {
+            displaySummary();
+
+            System.out.println("\nAre you satisfied with your character?");
+            System.out.println("[1] Yes, proceed with adventure");
+            System.out.println("[2] Change Role");
+            System.out.println("[3] Change Gender");
+            System.out.println("[4] Change Name");
+            System.out.print("Enter your choice (1-4): ");
+            String choice = scanner.nextLine().trim();
+
+            if (choice.equals("1")) {
+                System.out.println("\nCharacter confirmed! Moving to the next scene...\n");
+                break;
+            } else if (choice.equals("2")) {
+                chooseRole();
+            } else if (choice.equals("3")) {
+                chooseGender();
+            } else if (choice.equals("4")) {
+                inputName();
+            } else {
+                System.out.println("Invalid selection. Please choose 1, 2, 3, or 4.");
+            }
+        }
     }
 
     public static void chooseWeapon() {
