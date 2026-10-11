@@ -150,18 +150,7 @@ public class test {
 
     // mage sprite
     public static void mage() {
-        System.out.println("                   @@@@@@@@=                        ");
-        System.out.println("                      *%=---*%-                     ");
-        System.out.println("                   ---=====-====-:                  ");
-        System.out.println("                      #:#*=:+#=                     ");
-        System.out.println("                       -=====-                      ");
-        System.out.println("                      .@@@%= +*.                    ");
-        System.out.println("                      %@@@    -=                    ");
-        System.out.println("                     %% *%    -%#                   ");
-    }
 
-    // fighter sprite
-    public static void fighter() {
         System.out.println("                        @@@@@                       ");
         System.out.println("                     @   @@@@@                      ");
         System.out.println("                    @  @@@@@@@@.                    ");
@@ -170,6 +159,18 @@ public class test {
         System.out.println("                    @ # @ :@@: ::                   ");
         System.out.println("                    @.@ @ ####.@-                   ");
         System.out.println("                    @%%%@    %.                     ");
+    }
+
+    // fighter sprite
+    public static void fighter() {
+        System.out.println("                   @@@@@@@@=                        ");
+        System.out.println("                      *%=---*%-                     ");
+        System.out.println("                   ---=====-====-:                  ");
+        System.out.println("                      #:#*=:+#=                     ");
+        System.out.println("                       -=====-                      ");
+        System.out.println("                      .@@@%= +*.                    ");
+        System.out.println("                      %@@@    -=                    ");
+        System.out.println("                     %% *%    -%#                   ");
     }
 
     // tank sprite
