@@ -13,7 +13,7 @@ public class test {
     static int playerDef = 0;
     static int playerMaxDef = 0;
 
-    public static void main(String[] args)throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         // Welcome Banner
         System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
@@ -28,7 +28,7 @@ public class test {
         }
         Thread.sleep(2000); // Wait 2 seconds
 
-        // Clear the screen to wipe away the previous text 
+        // Clear the screen to wipe away the previous text
         System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
 
@@ -60,13 +60,12 @@ public class test {
         System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
 
-
         System.out.println("\n=================================================");
         System.out.println("               ROLE SELECTION COMPLETE           ");
         System.out.println("=================================================");
-        System.out.println("Role    : " + playerRole );
-        System.out.println("Base HP : " + playerHp + " / " + playerMaxHp );
-        System.out.println("Base Defense: "+ playerDef + "/" + playerMaxDef);
+        System.out.println("Role    : " + playerRole);
+        System.out.println("Base HP : " + playerHp + " / " + playerMaxHp);
+        System.out.println("Base Defense: " + playerDef + "/" + playerMaxDef);
         System.out.println("-------------------------------------------------");
         System.out.println("Status: Role and HP successfully assigned!");
         System.out.println("=================================================");
@@ -99,7 +98,7 @@ public class test {
 
     }
 
-    //Start menu method
+    // Start menu method
     public static boolean startMenu() {
         while (true) {
             System.out.println("---------------- START MENU ----------------");
@@ -118,7 +117,7 @@ public class test {
         }
     }
 
-    //tree house story method
+    // tree house story method
     public static void treehouseScene() {
         System.out.println("\n======================================================================");
         System.out.println("                  1. THE TREE HOUSE - THE BEGINNING                   ");
@@ -146,44 +145,44 @@ public class test {
         pause();
     }
 
-    //mage sprite
-    public static void mage(){
+    // mage sprite
+    public static void mage() {
         System.out.println("                   @@@@@@@@=                        ");
-        System.out.println("                      *%=---*%-                     ");                             
-        System.out.println("                   ---=====-====-:                  ");  
-        System.out.println("                      #:#*=:+#=                     ");                                   
-        System.out.println("                       -=====-                      ");   
-        System.out.println("                      .@@@%= +*.                    ");                               
-        System.out.println("                      %@@@    -=                    ");           
+        System.out.println("                      *%=---*%-                     ");
+        System.out.println("                   ---=====-====-:                  ");
+        System.out.println("                      #:#*=:+#=                     ");
+        System.out.println("                       -=====-                      ");
+        System.out.println("                      .@@@%= +*.                    ");
+        System.out.println("                      %@@@    -=                    ");
         System.out.println("                     %% *%    -%#                   ");
     }
 
-    //fighter sprite
-    public static void fighter(){
+    // fighter sprite
+    public static void fighter() {
         System.out.println("                        @@@@@                       ");
-        System.out.println("                     @   @@@@@                      ");                             
-        System.out.println("                    @  @@@@@@@@.                    ");  
-        System.out.println("                       @@ @@ @@.                    ");                                   
-        System.out.println("                    @@@@@      @-                   ");   
-        System.out.println("                    @ # @ :@@: ::                   ");                               
-        System.out.println("                    @.@ @ ####.@-                   ");           
+        System.out.println("                     @   @@@@@                      ");
+        System.out.println("                    @  @@@@@@@@.                    ");
+        System.out.println("                       @@ @@ @@.                    ");
+        System.out.println("                    @@@@@      @-                   ");
+        System.out.println("                    @ # @ :@@: ::                   ");
+        System.out.println("                    @.@ @ ####.@-                   ");
         System.out.println("                    @%%%@    %.                     ");
     }
 
-    //tank sprite
-    public static void tank(){
+    // tank sprite
+    public static void tank() {
         System.out.println("                        +@@@@                       ");
-        System.out.println("                    =: .------*                     ");  
-        System.out.println("                     -------=-=--                   ");                                   
-        System.out.println("                     ..+@+::#@  *                   ");   
-        System.out.println("                    -+--=====    @                  ");                               
-        System.out.println("                    =%%++@#..# %# @                 ");           
+        System.out.println("                    =: .------*                     ");
+        System.out.println("                     -------=-=--                   ");
+        System.out.println("                     ..+@+::#@  *                   ");
+        System.out.println("                    -+--=====    @                  ");
+        System.out.println("                    =%%++@#..# %# @                 ");
         System.out.println("                    =:            @                 ");
         System.out.println("                       -=    *                      ");
     }
 
-    //choose your role method
-    public static void chooseRole()throws InterruptedException {
+    // choose your role method
+    public static void chooseRole() throws InterruptedException {
         while (true) {
             System.out.println("\n---------------- CHOOSE YOUR ROLE ----------------\n");
 
@@ -199,8 +198,8 @@ public class test {
             Thread.sleep(2000); // Wait 2 seconds
 
             fighter();
-                    
-            System.out.println("==================================================="); 
+
+            System.out.println("===================================================");
             System.out.println("|                    [2] FIGHTER                   |");
             System.out.println("|        Balanced warrior, uses blade and bow      |");
             System.out.println("|                     HP: 12/12                    |");
@@ -218,7 +217,7 @@ public class test {
             System.out.println("|                     Def: 5/5                     |");
             System.out.println("---------------------------------------------------");
             Thread.sleep(2000); // Wait 2 seconds
-            
+
             System.out.print("Enter your choice (1-3): ");
             String choice = scanner.nextLine().trim();
 
@@ -248,16 +247,17 @@ public class test {
             }
         }
 
-        System.out.println("\nThe interface chimes: Role saved as [" + playerRole + "] with " + playerHp + " HP and " + playerDef + " Def!");
+        System.out.println("\nThe interface chimes: Role saved as [" + playerRole + "] with " + playerHp + " HP and "
+                + playerDef + " Def!");
     }
 
-    //pause method
+    // pause method
     public static void pause() {
         System.out.print("Press [ENTER] to continue...");
         scanner.nextLine();
     }
 
-    //choose your gender method
+    // choose your gender method
     public static void chooseGender() {
         while (true) {
             System.out.println("\n---------------- CHOOSE YOUR GENDER ----------------");
@@ -279,7 +279,7 @@ public class test {
         System.out.println("\nGender assigned: " + playerGender);
     }
 
-    //input name method
+    // input name method
     public static void inputName() {
         System.out.println("\n---------------- CHARACTER NAME ----------------");
         System.out.print("Enter character name: ");
@@ -292,8 +292,6 @@ public class test {
 
         System.out.println("\nName assigned: " + playerName);
     }
-
-    
 
     // Character profile summary display
     public static void displaySummary() {
@@ -311,7 +309,7 @@ public class test {
         } else {
             System.out.println("Invalid role. Please select a role again.");
         }
-    
+
         System.out.println("-------------------------------------------------");
         System.out.println("Name     : " + playerName);
         System.out.println("Gender   : " + playerGender);
@@ -321,8 +319,7 @@ public class test {
         System.out.println("=================================================");
     }
 
-
-    //confirm your character profile
+    // confirm your character profile
     public static void confirmCharacter() throws InterruptedException {
         while (true) {
             displaySummary();
@@ -370,7 +367,7 @@ public class test {
         }
     }
 
-    //choose your weapon
+    // choose your weapon
     public static void chooseWeapon() {
         while (true) {
             System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
