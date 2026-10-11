@@ -123,7 +123,7 @@ public class test {
     // tree house story method
     public static void treehouseScene() {
         System.out.println("\n======================================================================");
-        System.out.println("                  1. THE TREE HOUSE - THE BENINGGING                   ");
+        System.out.println("                  1. THE TREE HOUSE - THE BEGINNING                   ");
         System.out.println("======================================================================");
         System.out.println("           You are hanging out inside the secret tree house           ");
         System.out.println("           with your two adventurer friends.                          ");
@@ -149,40 +149,92 @@ public class test {
     }
 
     // mage sprite
-    public static void mage() {
+    public static void tank() {
 
-        System.out.println("                        @@@@@                       ");
-        System.out.println("                     @   @@@@@                      ");
-        System.out.println("                    @  @@@@@@@@.                    ");
-        System.out.println("                       @@ @@ @@.                    ");
-        System.out.println("                    @@@@@      @-                   ");
-        System.out.println("                    @ # @ :@@: ::                   ");
-        System.out.println("                    @.@ @ ####.@-                   ");
-        System.out.println("                    @%%%@    %.                     ");
+        System.out.println("                                                         ++-:  ::+");
+        System.out.println("                                                    .-*+  .:---*  ");
+        System.out.println("                                                 +*..  --:-%+..   ");
+        System.out.println("                          ::::::.           .:=-:...--==+-:       ");
+        System.out.println("                        :@###%%#%@.      ..%-  .----=%.           ");
+        System.out.println("                      -############# :#+::.:-=:+#=:               ");
+        System.out.println("                .-:  *%#%##########%-.::---=+*                    ");
+        System.out.println("               %.:+- @#%%#######%%%%%#:+@-                        ");
+        System.out.println("               .*++..@%%%####%#*%%%%@=:.                          ");
+        System.out.println("               @=== -%##%*++#*:*#%##%-                            ");
+        System.out.println("               %-+%#*#%%#:#:.::#:%%@%%#=                          ");
+        System.out.println("            =+*#::=-:-+#%+:    :+%-.++*+                          ");
+        System.out.println("          =-:+@..:=*%@%*=#= .::=#*.=-::-#=                        ");
+        System.out.println("       :+%**##%##%+--##=++:*+=:+#:-:=..:-#                        ");
+        System.out.println(" .=++######*@*==+*#%%#-=%*--:--+##+:*===++*.                      ");
+        System.out.println(".+-+-%#%*.  :@#***+*%@%@=###+*##+*#-::..++=*                      ");
+        System.out.println(".+=-==      .%#+++=+##*#+###*###*+%%#+=:.:.=+                     ");
+        System.out.println("               .%%=+#.%%#=- :-==*@#@+**=-+-+-                     ");
+        System.out.println("                     @*%@######%@#*%%#+++#%%=                     ");
+        System.out.println("                   .#*#*=%**##*#==%%@===-=**                      ");
+        System.out.println("                   *#*#:=%**#**#=:+%@%+-::**                      ");
+        System.out.println("                 :##%#:=+%*****#+:=##%##%+                        ");
+        System.out.println("                   :#====##****#*=-+=*                            ");
+        System.out.println("                   -*=++=*-    %+==-=**                           ");
+        System.out.println("                 -#=:-+==#-    -#:::=**                           ");
+        System.out.println("               .#+=++#*+*=     :*+-=+=*+                          ");
+        System.out.println("                                  #::..*-                         ");
     }
 
     // fighter sprite
-    public static void fighter() {
-        System.out.println("                   @@@@@@@@=                        ");
-        System.out.println("                      *%=---*%-                     ");
-        System.out.println("                   ---=====-====-:                  ");
-        System.out.println("                      #:#*=:+#=                     ");
-        System.out.println("                       -=====-                      ");
-        System.out.println("                      .@@@%= +*.                    ");
-        System.out.println("                      %@@@    -=                    ");
-        System.out.println("                     %% *%    -%#                   ");
+    public static void mage() {
+        System.out.println("                                        %%%%-                      ");
+        System.out.println("                                    :+#***##%*                     ");
+        System.out.println("                                  .+#****##%%#=                    ");
+        System.out.println("                          ......:%#%%***###%%%%-                   ");
+        System.out.println("                   .    .%###%***###***##%%%-:%%*:                 ");
+        System.out.println("                        .##%%###%##**##%%%%%=  :-:                 ");
+        System.out.println("                          .%#*#####%%%**##%%+                      ");
+        System.out.println("             :   :-.:-.:   :=#%=#+%#=%#%%%*#%%%-                   ");
+        System.out.println("                :.   .:.     -+*..*+.+++:%%%##%%.                  ");
+        System.out.println("                .-. .-: .     :=....:=%%%-                         ");
+        System.out.println("                   .          -%%%*+-%%#@@.                        ");
+        System.out.println("                   :=-::-.   %%##%#####%%##.                       ");
+        System.out.println("                     #+=:*+%#*#######*%%*##*                       ");
+        System.out.println("                       #%%*%##%##****##%**#%-                      ");
+        System.out.println("                       ##%#%##**%##*#%%@####%                      ");
+        System.out.println("                        =+*-   *#***###%%*###%                     ");
+        System.out.println("                              .**###%#%%%#**##:                    ");
+        System.out.println("                              #*****%*#%%%##+==                    ");
+        System.out.println("                             *#*****#*%%#%#:-:*                    ");
+        System.out.println("                            +********#%%%%%%:                      ");
+        System.out.println("                           :#**#***##*#%##%%=                      ");
+        System.out.println("                           %**##*****%#%##%%%                      ");
+        System.out.println("                          %#####*****##%%%%%#*                     ");
+        System.out.println("                           ###*+++++*##**###%#                     ");
+        System.out.println("                           ***=:..    %%%%%                        ");
     }
 
     // tank sprite
-    public static void tank() {
-        System.out.println("                        +@@@@                       ");
-        System.out.println("                    =: .------*                     ");
-        System.out.println("                     -------=-=--                   ");
-        System.out.println("                     ..+@+::#@  *                   ");
-        System.out.println("                    -+--=====    @                  ");
-        System.out.println("                    =%%++@#..# %# @                 ");
-        System.out.println("                    =:            @                 ");
-        System.out.println("                       -=    *                      ");
+    public static void fighter() {
+        System.out.println("         *#+                   .-+***+                    ");
+        System.out.println("          +#*+               =**++++++#-                  ");
+        System.out.println("          .%* -=.           .#*#++=+++##+   -#%:          ");
+        System.out.println("          =#*   -=         .#%#+*###+*##=  :*%%%#         ");
+        System.out.println("          %**     -+        %%%*-=-+####*=-+%%%=          ");
+        System.out.println("          %*=       :=       .:#+==*#%+%%%%%+:            ");
+        System.out.println("         .*#          -+     .#%%%%##%%*+#*#%%:           ");
+        System.out.println("        .=*.            -=..##%######**=**#%%%:           ");
+        System.out.println("        #*#               -**=###%**+----++#%+.           ");
+        System.out.println("        ###+        -+=:=+**%=::-=*+###+*#%%%%:           ");
+        System.out.println("         %####*+-#%*+#+****#**::=*#%%%%%%%%%%%:           ");
+        System.out.println("       .*#%-=%##*#%%##%#####%.%%%#%%#%%#%%%%%%:           ");
+        System.out.println("          =**%%*: +        :  :%%%%%%%%#%%%%%+.           ");
+        System.out.println("           .###-         .-=%=*%#=*#%##%%%*=-.            ");
+        System.out.println("            -%*:            +%%%%%%%%%%%##%=              ");
+        System.out.println("             :+*+.         #%##%#*#####%##%=              ");
+        System.out.println("              =###.        ###*%#######%%%#:              ");
+        System.out.println("                =###      *###*#+*####*##%%#:             ");
+        System.out.println("                  =%#-     :%%%%%%%#***%%%#=.             ");
+        System.out.println("                    =%#+. *#%%%%#- :#%%%%%=               ");
+        System.out.println("                      -%%=++==+*#=  *+=+++*=              ");
+        System.out.println("                       -=.*%%%#%%=  *%#*%%#%-             ");
+        System.out.println("                           #%%%*       #%#%=              ");
+        System.out.println("                        =%####%*       +##%%-             ");
     }
 
     // choose your role method
@@ -201,6 +253,10 @@ public class test {
             System.out.println("---------------------------------------------------\n");
             Thread.sleep(2000); // Wait 2 seconds
 
+            // Clear the screen to wipe away the previous text
+            System.out.print("\033[H\033[2J\033[2J");
+            System.out.flush();
+
             fighter();
 
             System.out.println("===================================================");
@@ -210,6 +266,9 @@ public class test {
             System.out.println("|                     Def: 4/4                     |");
             System.out.println("---------------------------------------------------\n");
             Thread.sleep(2000); // Wait 2 seconds
+
+            System.out.print("\033[H\033[2J\033[2J");
+            System.out.flush();
 
             tank();
 
@@ -221,6 +280,7 @@ public class test {
             System.out.println("|                     Def: 5/5                     |");
             System.out.println("---------------------------------------------------");
             Thread.sleep(2000); // Wait 2 seconds
+
 
             System.out.print("Enter your choice (1-3): ");
             String choice = scanner.nextLine().trim();
@@ -662,5 +722,91 @@ public class test {
             System.out.println("Vitality increased: Max HP is now " + playerMaxHp + "!");
         }
         System.out.println("=================================================\n");
+    }
+
+    //ENEMY SPRITES
+    public static void slime(){
+    System.out.println("                    .##############.                      ");
+    System.out.println("                 ####*==============*####                 ");
+    System.out.println("              =##++======================##=              ");
+    System.out.println("            --+**++===============-----==**=--            ");
+    System.out.println("            ##***=================:::::====+##            ");
+    System.out.println("            ##**+=================:::::::==+##            ");
+    System.out.println("         :##+***+=====  ==========  -::::=====##:         ");
+    System.out.println("         :##+****=====  ==========  ==========##:         ");
+    System.out.println("         :##+***+=====  ==========  ==========##:         ");
+    System.out.println("         :##+***+=============================##:         ");
+    System.out.println("         :##+********+===================****+##:         ");
+    System.out.println("            ##******************************##            ");
+    System.out.println("              -############################=              ");
+    }
+
+    public static void goblin(){
+        System.out.println("                  =-               -*                 ");
+        System.out.println("                 ##**+- .+*%##+:-+****                ");
+        System.out.println("                 ##+++*@#++++++##*+**=                ");
+        System.out.println("                  +#++#%++ *++* +#@+                  ");
+        System.out.println("                     =#+++++*****#++++                ");
+        System.out.println("                     .=%++++*****#++                  ");
+        System.out.println("                   =*####++#**%*#%%=                  ");
+        System.out.println("                  +#****#########**##                 ");
+        System.out.println("                 ##+*%%@*******%%%#+**                ");
+        System.out.println("                 ##++*@@*******%@#++**                ");
+        System.out.println("                  =**+=#+++*+++*=+**+                 ");
+        System.out.println("                   .+#++++*#+++++#*.                  ");
+        System.out.println("                 #@%#*++*@   #+++*#%@*.               ");
+    }
+
+    public static void skeleton(){
+        System.out.println("                    @@@#@@@@@@%%@@%@@@#                   ");
+        System.out.println("                    ###+######**##**##+                   ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                :::    .:::::::::::   .:::                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                    @@@:   %@@%    @@@#                   ");
+        System.out.println("                                                          ");
+        System.out.println("                    @@@#@@@@@@%%@@%@@@#                   ");
+        System.out.println("                    ***=******++**+***+                   ");
+        System.out.println("                @@@:       %@@%       :@@@                ");
+        System.out.println("                @@@:   -===%@@%====   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                %%%:   :---%%%#---:   :%%%                ");
+        System.out.println("                @@@:       %@@%       :@@@                ");
+        System.out.println("                       =######**##*                       ");
+        System.out.println("                       +@@@@@@%%@@#                       ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+    }
+
+    public static void zombie(){
+        System.out.println("                   .::::::                           ");
+        System.out.println("                 -%*++++++##.                        ");
+        System.out.println("                %###+++++++++#                       ");
+        System.out.println("                %#%*+++*+++++#                       ");
+        System.out.println("              .#**######**%#%#                       ");
+        System.out.println("              .+###**%%#*+%%#*                       ");
+        System.out.println("                .*%#*++*##++**                       ");
+        System.out.println("             :=###%###%*%#*#                         ");
+        System.out.println("           :#*****###*#*##+##+::::::::::             ");
+        System.out.println("          ###******##%****%#*##+++++++++#*.          ");
+        System.out.println("          ###**##****###############%##%*+++         ");
+        System.out.println("          #%##%###********#-        ###.#+*+         ");
+        System.out.println("          .#+*#%##*******#.           . .%%.         ");
+        System.out.println("          .#*+*%####*****#                           ");
+        System.out.println("          .#*++%%####*####                           ");
+        System.out.println("          %#*++%%%%%%%%%%%%=                         ");
+        System.out.println("         +*#***%%%###%%%###*                         ");
+        System.out.println("          =####%%##%= %%####*                        ");
+        System.out.println("              -%#%%%=  %%#*#%                        ");
+        System.out.println("             +%#%#%-   %%%##%                        ");
+        System.out.println("            .%###+=    .%####                        ");
+        System.out.println("           =%##****-   .%#**+**+                     ");
+        System.out.println("           .::::.:.:.   ::::::::                     ");
     }
 }
