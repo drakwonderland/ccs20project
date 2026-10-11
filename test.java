@@ -12,6 +12,7 @@ public class test {
     static int playerMaxHp = 0;
     static int playerDef = 0;
     static int playerMaxDef = 0;
+    static int attackBonus = 0;
 
     public static void main(String[] args) throws InterruptedException {
         // Welcome Banner
@@ -96,6 +97,8 @@ public class test {
         System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
 
+        // Launch Difficulty Adventures (Easy, Medium, Hard)
+        startAdventure();
     }
 
     // Start menu method
@@ -429,5 +432,234 @@ public class test {
                 }
             }
         }
+    }
+
+    public static void startAdventure() throws InterruptedException {
+        Thread.sleep(1000);
+        System.out.print("\033[H\033[2J\033[3J");
+        System.out.flush();
+
+        System.out.println("\n=================================================");
+        System.out.println("              DIFFICULTY: EASY                   ");
+        System.out.println("=================================================");
+        Thread.sleep(2000);
+
+        executeBattle("Slime", 5, "Tackle", 3, false, false);
+        upgradeAfterBattle();
+
+        executeBattle("Goblin", 10, "Axe Swing", 5, false, false);
+        upgradeAfterBattle();
+
+        executeBattle("Zombie", 15, "Bite", 7, false, false);
+        upgradeAfterDifficulty("Easy");
+
+        Thread.sleep(1000);
+        System.out.print("\033[H\033[2J\033[3J");
+        System.out.flush();
+
+        System.out.println("\n=================================================");
+        System.out.println("             DIFFICULTY: MEDIUM                  ");
+        System.out.println("=================================================");
+        Thread.sleep(2000);
+
+        executeBattle("Serpent", 25, "Coil", 10, false, false);
+        upgradeAfterBattle();
+
+        executeBattle("Werewolf", 35, "Quick Attack", 12, false, false);
+        upgradeAfterBattle();
+
+        // Dirt Golem has the 2-hit shield block enabled
+        executeBattle("Dirt Golem", 50, "Dirt Swing", 2, true, false);
+        upgradeAfterDifficulty("Medium");
+
+        Thread.sleep(1000);
+        System.out.print("\033[H\033[2J\033[3J");
+        System.out.flush();
+
+        System.out.println("\n=================================================");
+        System.out.println("              DIFFICULTY: HARD                   ");
+        System.out.println("=================================================");
+        Thread.sleep(2000);
+
+        executeBattle("Drow", 70, "Sword Slash", 16, false, false);
+        upgradeAfterBattle();
+
+        // Necromancer has the Life Siphon heal enabled
+        executeBattle("Necromancer", 90, "Life Siphon", 18, false, true);
+        upgradeAfterBattle();
+
+        // Red Dragon (Final Boss)
+        executeBattle("Red Dragon", 100, "Fire Breath", 20, false, false);
+
+        // Victory Finale
+        Thread.sleep(1000);
+        System.out.print("\033[H\033[2J\033[3J");
+        System.out.flush();
+
+        System.out.println("\n=================================================");
+        System.out.println("      CONGRATULATIONS! YOU BEAT THE GAME!        ");
+        System.out.println("=================================================");
+    }
+
+    public static void executeBattle(String monsterName, int monsterHp, String monsterAtkName,
+            int monsterBaseDmg, boolean isDirtGolem, boolean isNecro)
+            throws InterruptedException {
+
+        int currentMonsterHp = monsterHp;
+        int golemShields = isDirtGolem ? 2 : 0;
+
+        // Always start battle with full HP
+        playerHp = playerMaxHp;
+
+        System.out.println("\n-------------------------------------------------");
+        System.out.println("A wild " + monsterName + " appeared! (HP: " + monsterHp + ")");
+        System.out.println("-------------------------------------------------");
+        Thread.sleep(1500);
+
+        while (playerHp > 0 && currentMonsterHp > 0) {
+            boolean isDefending = false;
+
+            // Combat HUD
+            System.out.println("\n" + playerName + " [" + playerRole + "] HP: " + playerHp + "/" + playerMaxHp
+                    + " | DEF: " + playerDef);
+            System.out.println(monsterName + " HP: " + currentMonsterHp + "/" + monsterHp);
+            System.out.println("-------------------------------------------------");
+            System.out.println("Choose action: [1] Attack  [2] Defend");
+            System.out.print("Action: ");
+            String action = scanner.nextLine().trim();
+
+            // Player Turn
+            if (action.equals("1") || action.equalsIgnoreCase("attack")) {
+                int damageDealt = getPlayerAttackDamage();
+
+                if (golemShields > 0) {
+                    golemShields--;
+                    System.out.println(
+                            "The Dirt Golem's stone shield BLOCKED your attack! (Shields left: " + golemShields + ")");
+                } else {
+                    currentMonsterHp -= damageDealt;
+                    System.out.println("You attacked and dealt " + damageDealt + " damage to " + monsterName + "!");
+                }
+            } else if (action.equals("2") || action.equalsIgnoreCase("defend")) {
+                isDefending = true;
+                System.out.println("You braced yourself! (Incoming damage reduced)");
+            } else {
+                System.out.println("You hesitated and lost your chance to act!");
+            }
+
+            // Check if Monster Died
+            if (currentMonsterHp <= 0) {
+                System.out.println("\n*** " + monsterName.toUpperCase() + " DEFEATED! ***");
+                Thread.sleep(1500);
+                return;
+            }
+
+            // Monster Turn
+            Thread.sleep(1000);
+            System.out.println("\n--- Enemy Turn ---");
+            System.out.println(monsterName + " uses [" + monsterAtkName + "] (" + monsterBaseDmg + " DMG)!");
+
+            int effectiveDef = playerDef + (isDefending ? 4 : 0);
+            int damageTaken = Math.max(1, monsterBaseDmg - effectiveDef);
+
+            playerHp -= damageTaken;
+            if (playerHp < 0)
+                playerHp = 0;
+            System.out
+                    .println("You took " + damageTaken + " damage! (Current HP: " + playerHp + "/" + playerMaxHp + ")");
+
+            // Necromancer Life Siphon mechanic
+            if (isNecro && playerHp > 0) {
+                currentMonsterHp = Math.min(monsterHp, currentMonsterHp + 5);
+                System.out.println("The Necromancer siphons life and restores 5 HP!");
+            }
+
+            // Player Death / Retry Check
+            if (playerHp <= 0) {
+                System.out.println("\nYou were defeated by " + monsterName + "!");
+                System.out.println("Recovering HP and restarting this battle...\n");
+                Thread.sleep(2000);
+                // Restart this battle
+                currentMonsterHp = monsterHp;
+                golemShields = isDirtGolem ? 2 : 0;
+                playerHp = playerMaxHp;
+            }
+        }
+    }
+
+    // Calculates attack damage according to role + level up bonus
+    public static int getPlayerAttackDamage() {
+        int baseDmg = 5;
+        if (playerRole.equalsIgnoreCase("Mage")) {
+            baseDmg = 6;
+        } else if (playerRole.equalsIgnoreCase("Fighter")) {
+            baseDmg = 5;
+        } else if (playerRole.equalsIgnoreCase("Tank")) {
+            baseDmg = 4;
+        }
+        return baseDmg + attackBonus;
+    }
+
+    public static void upgradeAfterBattle() {
+        System.out.println("\n---------------- VICTORY UPGRADE ----------------");
+        int atkUp = 0;
+        int defUp = 0;
+
+        if (playerRole.equalsIgnoreCase("Mage")) {
+            atkUp = 6;
+            defUp = 2;
+        } else if (playerRole.equalsIgnoreCase("Fighter")) {
+            atkUp = 5;
+            defUp = 3;
+        } else if (playerRole.equalsIgnoreCase("Tank")) {
+            atkUp = 2;
+            defUp = 6;
+        }
+
+        System.out.println("Choose an upgrade:");
+        System.out.println("[1] Upgrade Attack (+" + atkUp + " DMG)");
+        System.out.println("[2] Upgrade Defense (+" + defUp + " DEF)");
+        System.out.print("Choice: ");
+        String choice = scanner.nextLine().trim();
+
+        if (choice.equals("2") || choice.equalsIgnoreCase("defense")) {
+            playerDef += defUp;
+            playerMaxDef += defUp;
+            System.out.println("Defense increased by +" + defUp + "! (Total DEF: " + playerDef + ")");
+        } else {
+            attackBonus += atkUp;
+            System.out.println("Attack increased by +" + atkUp + "! (Total Bonus: +" + attackBonus + ")");
+        }
+        System.out.println("-------------------------------------------------\n");
+    }
+
+    public static void upgradeAfterDifficulty(String diff) {
+        System.out.println("\n=================================================");
+        System.out.println("       " + diff.toUpperCase() + " DIFFICULTY CLEARED MILESTONE!    ");
+        System.out.println("=================================================");
+        int hpUp = 0;
+        if (playerRole.equalsIgnoreCase("Mage"))
+            hpUp = 2;
+        else if (playerRole.equalsIgnoreCase("Fighter"))
+            hpUp = 5;
+        else if (playerRole.equalsIgnoreCase("Tank"))
+            hpUp = 3;
+
+        System.out.println("Choose Milestone Bonus:");
+        System.out.println("[1] Upgrade Health (+" + hpUp + " Max HP & Full Heal)");
+        System.out.println("[2] Upgrade Other (+2 Attack & +2 Defense)");
+        System.out.print("Choice: ");
+        String choice = scanner.nextLine().trim();
+
+        if (choice.equals("2") || choice.equalsIgnoreCase("other")) {
+            attackBonus += 2;
+            playerDef += 2;
+            System.out.println("Applied combat mastery: +2 Attack and +2 Defense!");
+        } else {
+            playerMaxHp += hpUp;
+            playerHp = playerMaxHp;
+            System.out.println("Vitality increased: Max HP is now " + playerMaxHp + "!");
+        }
+        System.out.println("=================================================\n");
     }
 }
