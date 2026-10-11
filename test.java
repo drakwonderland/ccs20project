@@ -123,7 +123,7 @@ public class test {
     // tree house story method
     public static void treehouseScene() {
         System.out.println("\n======================================================================");
-        System.out.println("                  1. THE TREE HOUSE - THE BEGINNING                   ");
+        System.out.println("                  1. THE TREE HOUSE - THE BENINGGING                   ");
         System.out.println("======================================================================");
         System.out.println("           You are hanging out inside the secret tree house           ");
         System.out.println("           with your two adventurer friends.                          ");
