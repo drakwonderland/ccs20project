@@ -1051,4 +1051,76 @@ public class test {
         System.out.println("            ##******************************##            ");
         System.out.println("              -############################=              ");
     }
+
+        //goblin sprite
+     public static void goblin(){
+        System.out.println("                  =-               -*                 ");
+        System.out.println("                 ##**+- .+*%##+:-+****                ");
+        System.out.println("                 ##+++*@#++++++##*+**=                ");
+        System.out.println("                  +#++#%++ *++* +#@+                  ");
+        System.out.println("                     =#+++++*****#++++                ");
+        System.out.println("                     .=%++++*****#++                  ");
+        System.out.println("                   =*####++#**%*#%%=                  ");
+        System.out.println("                  +#****#########**##                 ");
+        System.out.println("                 ##+*%%@*******%%%#+**                ");
+        System.out.println("                 ##++*@@*******%@#++**                ");
+        System.out.println("                  =**+=#+++*+++*=+**+                 ");
+        System.out.println("                   .+#++++*#+++++#*.                  ");
+        System.out.println("                 #@%#*++*@   #+++*#%@*.               ");
+    }
+
+    //skeleton sprite
+    public static void skeleton(){
+        System.out.println("                    @@@#@@@@@@%%@@%@@@#                   ");
+        System.out.println("                    ###+######**##**##+                   ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                :::    .:::::::::::   .:::                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
+        System.out.println("                    @@@:   %@@%    @@@#                   ");
+        System.out.println("                                                          ");
+        System.out.println("                    @@@#@@@@@@%%@@%@@@#                   ");
+        System.out.println("                    ***=******++**+***+                   ");
+        System.out.println("                @@@:       %@@%       :@@@                ");
+        System.out.println("                @@@:   -===%@@%====   :@@@                ");
+        System.out.println("                @@@:   +@@@@@@%%@@#   :@@@                ");
+        System.out.println("                %%%:   :---%%%#---:   :%%%                ");
+        System.out.println("                @@@:       %@@%       :@@@                ");
+        System.out.println("                       =######**##*                       ");
+        System.out.println("                       +@@@@@@%%@@#                       ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+        System.out.println("                    @@@:           @@@#                   ");
+    }
+
+    //zombie sprite
+    public static void zombie(){
+        System.out.println("                   .::::::                           ");
+        System.out.println("                 -%*++++++##.                        ");
+        System.out.println("                %###+++++++++#                       ");
+        System.out.println("                %#%*+++*+++++#                       ");
+        System.out.println("              .#**######**%#%#                       ");
+        System.out.println("              .+###**%%#*+%%#*                       ");
+        System.out.println("                .*%#*++*##++**                       ");
+        System.out.println("             :=###%###%*%#*#                         ");
+        System.out.println("           :#*****###*#*##+##+::::::::::             ");
+        System.out.println("          ###******##%****%#*##+++++++++#*.          ");
+        System.out.println("          ###**##****###############%##%*+++         ");
+        System.out.println("          #%##%###********#-        ###.#+*+         ");
+        System.out.println("          .#+*#%##*******#.           . .%%.         ");
+        System.out.println("          .#*+*%####*****#                           ");
+        System.out.println("          .#*++%%####*####                           ");
+        System.out.println("          %#*++%%%%%%%%%%%%=                         ");
+        System.out.println("         +*#***%%%###%%%###*                         ");
+        System.out.println("          =####%%##%= %%####*                        ");
+        System.out.println("              -%#%%%=  %%#*#%                        ");
+        System.out.println("             +%#%#%-   %%%##%                        ");
+        System.out.println("            .%###+=    .%####                        ");
+        System.out.println("           =%##****-   .%#**+**+                     ");
+        System.out.println("           .::::.:.:.   ::::::::                     ");
+    }
 }
