@@ -20,6 +20,7 @@ public class test {
         System.out.println("=================================================");
         System.out.println("=================================================");
         System.out.println("=================================================");
+        System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
         System.out.println("Welcome to the text-based adventure!    \n");
