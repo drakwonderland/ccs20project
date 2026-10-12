@@ -289,29 +289,40 @@ public class test {
             System.out.print("Enter your choice (1-3): ");
             String choice = scanner.nextLine().trim();
 
-            if (choice.equals("1") || choice.equalsIgnoreCase("mage")) {
-                playerRole = "Mage";
-                playerHp = 10;
-                playerMaxHp = 10;
-                playerDef = 3;
-                playerMaxDef = 3;
+            boolean roleChosen = true;
+            switch (choice.toLowerCase()) {
+                case "1":
+                case "mage":
+                    playerRole = "Mage";
+                    playerHp = 10;
+                    playerMaxHp = 10;
+                    playerDef = 3;
+                    playerMaxDef = 3;
+                    break;
+                case "2":
+                case "fighter":
+                    playerRole = "Fighter";
+                    playerHp = 12;
+                    playerMaxHp = 12;
+                    playerDef = 4;
+                    playerMaxDef = 4;
+                    break;
+                case "3":
+                case "tank":
+                    playerRole = "Tank";
+                    playerHp = 15;
+                    playerMaxHp = 15;
+                    playerDef = 5;
+                    playerMaxDef = 5;
+                    break;
+                default:
+                    System.out.println("Invalid selection. Please choose 1, 2, or 3.");
+                    roleChosen = false;
+                    break;
+            }
+
+            if (roleChosen) {
                 break;
-            } else if (choice.equals("2") || choice.equalsIgnoreCase("fighter")) {
-                playerRole = "Fighter";
-                playerHp = 12;
-                playerMaxHp = 12;
-                playerDef = 4;
-                playerMaxDef = 4;
-                break;
-            } else if (choice.equals("3") || choice.equalsIgnoreCase("tank")) {
-                playerRole = "Tank";
-                playerHp = 15;
-                playerMaxHp = 15;
-                playerDef = 5;
-                playerMaxDef = 5;
-                break;
-            } else {
-                System.out.println("Invalid selection. Please choose 1, 2, or 3.");
             }
         }
 
@@ -385,14 +396,19 @@ public class test {
         System.out.println("=================================================");
 
         // Display the sprite based on the current role
-        if (playerRole.equalsIgnoreCase("Mage")) {
-            mage();
-        } else if (playerRole.equalsIgnoreCase("Fighter")) {
-            fighter();
-        } else if (playerRole.equalsIgnoreCase("Tank")) {
-            tank();
-        } else {
-            System.out.println("Invalid role. Please select a role again.");
+        switch (playerRole.toLowerCase()) {
+            case "mage":
+                mage();
+                break;
+            case "fighter":
+                fighter();
+                break;
+            case "tank":
+                tank();
+                break;
+            default:
+                System.out.println("Invalid role. Please select a role again.");
+                break;
         }
 
         System.out.println("-------------------------------------------------");
@@ -451,87 +467,112 @@ public class test {
         while (true) {
             System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
 
-            if (playerRole.equals("Fighter")) {
-                System.out.println("[1] Bow (+10 Damage)");
-                System.out.println("[2] Sword (+10 Damage)");
-                System.out.println("[3] Crossbow (+12 Damage)");
-
-            } else if (playerRole.equals("Tank")) {
-                System.out.println("[1] Sword and Shield (+7 Damage, +6 Defense)");
-                System.out.println("[2] Warhammer (+8 Damage, +4 Defense)");
-                System.out.println("[3] Polearm (+10 Damage, +3 Defense)");
-
-            } else if (playerRole.equals("Mage")) {
-                System.out.println("[1] Ice Wand (+12 Damage)");
-                System.out.println("[2] Fire Staff (+12 Damage)");
+            switch (playerRole.toLowerCase()) {
+                case "fighter":
+                    System.out.println("[1] Bow (+10 Damage)");
+                    System.out.println("[2] Sword (+10 Damage)");
+                    System.out.println("[3] Crossbow (+12 Damage)");
+                    break;
+                case "tank":
+                    System.out.println("[1] Sword and Shield (+7 Damage, +6 Defense)");
+                    System.out.println("[2] Warhammer (+8 Damage, +4 Defense)");
+                    System.out.println("[3] Polearm (+10 Damage, +3 Defense)");
+                    break;
+                case "mage":
+                    System.out.println("[1] Ice Wand (+12 Damage)");
+                    System.out.println("[2] Fire Staff (+12 Damage)");
+                    break;
             }
 
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine().trim();
+            boolean weaponChosen = true;
 
-            // FIGHTER WEAPONS
-            if (playerRole.equals("Fighter")) {
-                if (choice.equals("1") || choice.equalsIgnoreCase("Bow")) {
-                    playerWeapon = "Bow";
-                    attackBonus += 10;
-                    System.out.println("Bow added to inventory (+10 Damage).");
+            switch (playerRole.toLowerCase()) {
+                case "fighter":
+                    switch (choice.toLowerCase()) {
+                        case "1":
+                        case "bow":
+                            playerWeapon = "Bow";
+                            attackBonus += 10;
+                            System.out.println("Bow added to inventory (+10 Damage).");
+                            break;
+                        case "2":
+                        case "sword":
+                            playerWeapon = "Sword";
+                            attackBonus += 10;
+                            System.out.println("Sword added to inventory (+10 Damage).");
+                            break;
+                        case "3":
+                        case "crossbow":
+                            playerWeapon = "Crossbow";
+                            attackBonus += 12;
+                            System.out.println("Crossbow added to inventory (+12 Damage).");
+                            break;
+                        default:
+                            System.out.println("Invalid Option. Try again.");
+                            weaponChosen = false;
+                            break;
+                    }
                     break;
-                } else if (choice.equals("2") || choice.equalsIgnoreCase("Sword")) {
-                    playerWeapon = "Sword";
-                    attackBonus += 10;
-                    System.out.println("Sword added to inventory (+10 Damage).");
-                    break;
-                } else if (choice.equals("3") || choice.equalsIgnoreCase("Crossbow")) {
-                    playerWeapon = "Crossbow";
-                    attackBonus += 12;
-                    System.out.println("Crossbow added to inventory (+12 Damage).");
-                    break;
-                } else {
-                    System.out.println("Invalid Option. Try again.");
-                }
 
-                // TANK WEAPONS
-            } else if (playerRole.equals("Tank")) {
-                if (choice.equals("1") || choice.equalsIgnoreCase("Sword and Shield")) {
-                    playerWeapon = "Sword and Shield";
-                    attackBonus += 7;
-                    playerDef += 6;
-                    playerMaxDef += 6;
-                    System.out.println("Sword and Shield added to inventory (+7 Damage, +6 Defense).");
+                case "tank":
+                    switch (choice.toLowerCase()) {
+                        case "1":
+                        case "sword and shield":
+                            playerWeapon = "Sword and Shield";
+                            attackBonus += 7;
+                            playerDef += 6;
+                            playerMaxDef += 6;
+                            System.out.println("Sword and Shield added to inventory (+7 Damage, +6 Defense).");
+                            break;
+                        case "2":
+                        case "warhammer":
+                            playerWeapon = "Warhammer";
+                            attackBonus += 8;
+                            playerDef += 4;
+                            playerMaxDef += 4;
+                            System.out.println("Warhammer added to inventory (+8 Damage, +4 Defense).");
+                            break;
+                        case "3":
+                        case "polearm":
+                            playerWeapon = "Polearm";
+                            attackBonus += 10;
+                            playerDef += 3;
+                            playerMaxDef += 3;
+                            System.out.println("Polearm added to inventory (+10 Damage, +3 Defense).");
+                            break;
+                        default:
+                            System.out.println("Invalid Option. Try again.");
+                            weaponChosen = false;
+                            break;
+                    }
                     break;
-                } else if (choice.equals("2") || choice.equalsIgnoreCase("Warhammer")) {
-                    playerWeapon = "Warhammer";
-                    attackBonus += 8;
-                    playerDef += 4;
-                    playerMaxDef += 4;
-                    System.out.println("Warhammer added to inventory (+8 Damage, +4 Defense).");
-                    break;
-                } else if (choice.equals("3") || choice.equalsIgnoreCase("Polearm")) {
-                    playerWeapon = "Polearm";
-                    attackBonus += 10;
-                    playerDef += 3;
-                    playerMaxDef += 3;
-                    System.out.println("Polearm added to inventory (+10 Damage, +3 Defense).");
-                    break;
-                } else {
-                    System.out.println("Invalid Option. Try again.");
-                }
 
-                // MAGE WEAPONS
-            } else if (playerRole.equals("Mage")) {
-                if (choice.equals("1") || choice.equalsIgnoreCase("Ice Wand")) {
-                    playerWeapon = "Ice Wand";
-                    attackBonus += 12;
-                    System.out.println("Ice Wand added to inventory (+12 Damage).");
+                case "mage":
+                    switch (choice.toLowerCase()) {
+                        case "1":
+                        case "ice wand":
+                            playerWeapon = "Ice Wand";
+                            attackBonus += 12;
+                            System.out.println("Ice Wand added to inventory (+12 Damage).");
+                            break;
+                        case "2":
+                        case "fire staff":
+                            playerWeapon = "Fire Staff";
+                            attackBonus += 12;
+                            System.out.println("Fire Staff added to inventory (+12 Damage).");
+                            break;
+                        default:
+                            System.out.println("Invalid Option. Try again.");
+                            weaponChosen = false;
+                            break;
+                    }
                     break;
-                } else if (choice.equals("2") || choice.equalsIgnoreCase("Fire Staff")) {
-                    playerWeapon = "Fire Staff";
-                    attackBonus += 12;
-                    System.out.println("Fire Staff added to inventory (+12 Damage).");
-                    break;
-                } else {
-                    System.out.println("Invalid Option. Try again.");
-                }
+            }
+
+            if (weaponChosen) {
+                break;
             }
         }
     }
@@ -950,13 +991,17 @@ public class test {
 
     // Calculates attack damage according to role + level up bonus
     public static int getPlayerAttackDamage() {
-        int baseDmg = 5;
-        if (playerRole.equalsIgnoreCase("Mage")) {
-            baseDmg = 6;
-        } else if (playerRole.equalsIgnoreCase("Fighter")) {
-            baseDmg = 5;
-        } else if (playerRole.equalsIgnoreCase("Tank")) {
-            baseDmg = 4;
+        int baseDmg;
+        switch (playerRole.toLowerCase()) {
+            case "mage":
+                baseDmg = 6;
+                break;
+            case "tank":
+                baseDmg = 4;
+                break;
+            default: // Fighter
+                baseDmg = 5;
+                break;
         }
         return baseDmg + attackBonus;
     }
@@ -967,18 +1012,22 @@ public class test {
         int defUp = 0;
         int hpUp = 0;
 
-        if (playerRole.equalsIgnoreCase("Mage")) {
-            atkUp = 14;
-            defUp = 3;
-            hpUp = 18;
-        } else if (playerRole.equalsIgnoreCase("Fighter")) {
-            atkUp = 12;
-            defUp = 4;
-            hpUp = 20;
-        } else if (playerRole.equalsIgnoreCase("Tank")) {
-            atkUp = 10;
-            defUp = 5;
-            hpUp = 25;
+        switch (playerRole.toLowerCase()) {
+            case "mage":
+                atkUp = 14;
+                defUp = 3;
+                hpUp = 18;
+                break;
+            case "tank":
+                atkUp = 10;
+                defUp = 5;
+                hpUp = 25;
+                break;
+            default: // Fighter
+                atkUp = 12;
+                defUp = 4;
+                hpUp = 20;
+                break;
         }
 
         System.out.println("Choose an upgrade:");
@@ -1007,13 +1056,18 @@ public class test {
         System.out.println("\n=================================================");
         System.out.println("       " + diff.toUpperCase() + " DIFFICULTY CLEARED MILESTONE!    ");
         System.out.println("=================================================");
-        int hpUp = 0;
-        if (playerRole.equalsIgnoreCase("Mage"))
-            hpUp = 35;
-        else if (playerRole.equalsIgnoreCase("Fighter"))
-            hpUp = 45;
-        else if (playerRole.equalsIgnoreCase("Tank"))
-            hpUp = 55;
+        int hpUp;
+        switch (playerRole.toLowerCase()) {
+            case "mage":
+                hpUp = 35;
+                break;
+            case "tank":
+                hpUp = 55;
+                break;
+            default: // Fighter
+                hpUp = 45;
+                break;
+        }
 
         System.out.println("Choose Milestone Bonus:");
         System.out.println("[1] Massive Vitality (+" + hpUp + " Max HP & Full Heal)");
