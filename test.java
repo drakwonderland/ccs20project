@@ -18,6 +18,7 @@ public class test {
     public static void main(String[] args) throws InterruptedException {
         // Welcome Banner
         System.out.println("=================================================");
+        System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
         System.out.println("Welcome to the text-based adventure!    \n");
@@ -755,3 +756,4 @@ public class test {
         System.out.println("              -############################=              ");
     }
 }
+
