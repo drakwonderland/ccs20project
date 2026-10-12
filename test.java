@@ -1177,4 +1177,43 @@ public class test {
         System.out.println("           =%##****-   .%#**+**+                     ");
         System.out.println("           .::::.:.:.   ::::::::                     ");
     }
+
+    //serpent sprite
+    public static void serpent(){
+        System.out.println("                    -%#----*%%.               ");
+        System.out.println("                  ==:. ..:.   :-#             ");
+        System.out.println("                +..        --:   =@           ");
+        System.out.println("             .+=......:-..   :   ..#          ");
+        System.out.println("            ==...:--.:.-:--      .:=-         ");
+        System.out.println("           @=.:.:::=-=*.=-   .  :. :@         ");
+        System.out.println("          #:-.:..:*-#:.#:- .:..  :: :@=       ");
+        System.out.println("         -=:::-=--:.#-+@:.%    : -%# @=       ");
+        System.out.println("         -=::--=+::%. =*@%%+#..*#%#-::*       ");
+        System.out.println("         =-::::--.++: +=*=%..: :...   :@      ");
+        System.out.println("         *:.--::. :*.::+*:+.  :: .. . -=      ");
+        System.out.println("         *:.:=::. .-*+::  *.:..=.  .:#+       ");
+        System.out.println("         *:.:.::.  :%#+=%-.+%::. ::#*         ");
+        System.out.println("         *: :=::   :* :@-.% .+ :.+@#          ");
+        System.out.println("         #:::-.:    *   @+.@@#@=-*.           ");
+        System.out.println("         #:::--:    *   #%#%%*%#-             ");
+        System.out.println("         -=:::: .   :*==+* :=:                ");
+        System.out.println("         -=.:.::.     +*=: .:-                ");
+        System.out.println("         .*.:....     .#     .=-              ");
+        System.out.println("          *=-.-=:::     #=:  : :.             ");
+        System.out.println("           %+.:  .:      +=@@@@-.....         ");
+        System.out.println("            .#.:   :       +%.:.:.:-=..-%%    ");
+        System.out.println("             .*:.:-.:      .:+:.:.:..:-  .+.  ");
+        System.out.println("                +.:=::.      -@#####-::    *=.");
+        System.out.println("         :+=+*****-:. .        =+..       :.#:");
+        System.out.println("      *++=:.::..::*::-::.       =+    .-..::%:");
+        System.out.println("   .%+.. ::.:.:.::::#:-.:.       =@-=:..::+.  ");
+        System.out.println("  .+ . .. : :.:..::=+@.. :       .:%:::.%%    ");
+        System.out.println(" :%-:. == :::=-:::..+@: =::::    .:#..        ");
+        System.out.println(":%:::.:.  ::*:...:::+.:-=::      .:#          ");
+        System.out.println(".*=::--.   -- :==-: .  .:.:.:    -@           ");
+        System.out.println(" .+-::---.. . .     .:=....      ++           ");
+        System.out.println("   +:.:::.:-------=-.:..        *:            ");
+        System.out.println("     =#-:.::::::::::. :    ::.#-              ");
+        System.out.println("         %%%+.:.:...:...--:%%=                ");
+    }
 }
