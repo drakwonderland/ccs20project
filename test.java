@@ -650,6 +650,7 @@ public class test {
         System.out.println("Just as " + playerName + " starts drinking, a deep hiss echoes nearby.");
         System.out.println("A giant serpent is right there, ready to strike!");
         System.out.println("----------------------------------------------------------------------");
+        serpent();
         pause();
 
         executeBattle("Serpent", 100, "Coil", 10, false, false);
