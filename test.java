@@ -18,6 +18,9 @@ public class test {
     public static void main(String[] args) throws InterruptedException {
         // Welcome Banner
         System.out.println("=================================================");
+        System.out.println("=================================================");
+        System.out.println("=================================================");
+        System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
         System.out.println("Welcome to the text-based adventure!    \n");
@@ -438,14 +441,13 @@ public class test {
             System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
 
             if (playerRole.equals("Fighter")) {
-                System.out.println("[1] Bow");
-                System.out.println("[2] Sword");
-                System.out.println("[3] Crossbow");
+                System.out.println("[1] Bow +5 Damage");
+                System.out.println("[2] Sword +5 Damage");
 
             } else if (playerRole.equals("Tank")) {
-                System.out.println("[1] Sword and Shield");
-                System.out.println("[2] Warhammer");
-                System.out.println("[3] Polearm");
+                System.out.println("[1] Sword and Shield +1 Damage, +5 Defense");
+                System.out.println("[2] Warhammer +2 Damage");
+                System.out.println("[3] Polearm +3 Damage");
 
             } else if (playerRole.equals("Mage")) {
                 System.out.println("[1] Ice Wand");
@@ -755,3 +757,4 @@ public class test {
         System.out.println("              -############################=              ");
     }
 }
+
