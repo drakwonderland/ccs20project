@@ -446,8 +446,8 @@ public class test {
                 System.out.println("[3] Polearm +3 Damage");
 
             } else if (playerRole.equals("Mage")) {
-                System.out.println("[1] Ice Wand");
-                System.out.println("[2] Fire Staff");
+                System.out.println("[1] Ice Wand +6 Damage");
+                System.out.println("[2] Fire Staff +6 Damage");
             }
 
             System.out.print("Enter your choice: ");
