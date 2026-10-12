@@ -18,9 +18,6 @@ public class test {
     public static void main(String[] args) throws InterruptedException {
         // Welcome Banner
         System.out.println("=================================================");
-        System.out.println("=================================================");
-        System.out.println("=================================================");
-        System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
         System.out.println("Welcome to the text-based adventure!    \n");
@@ -285,7 +282,6 @@ public class test {
             System.out.println("---------------------------------------------------");
             Thread.sleep(2000); // Wait 2 seconds
 
-
             System.out.print("Enter your choice (1-3): ");
             String choice = scanner.nextLine().trim();
 
@@ -475,7 +471,7 @@ public class test {
                     System.out.println("Invalid Option. Try again.");
                 }
 
-            // TANK WEAPONS
+                // TANK WEAPONS
             } else if (playerRole.equals("Tank")) {
                 if (choice.equals("1") || choice.equalsIgnoreCase("Sword and Shield")) {
                     playerWeapon = "Sword and Shield";
@@ -493,7 +489,7 @@ public class test {
                     System.out.println("Invalid Option. Try again.");
                 }
 
-            // MAGE WEAPONS
+                // MAGE WEAPONS
             } else if (playerRole.equals("Mage")) {
                 if (choice.equals("1") || choice.equalsIgnoreCase("Ice Wand")) {
                     playerWeapon = "Ice Wand";
@@ -615,7 +611,8 @@ public class test {
                 } else {
                     currentMonsterHp -= damageDealt;
                     String weaponUsed = playerWeapon.isEmpty() ? "weapon" : playerWeapon;
-                    System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt + " damage to " + monsterName + "!");
+                    System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt
+                            + " damage to " + monsterName + "!");
                 }
             } else if (action.equals("2") || action.equalsIgnoreCase("defend")) {
                 isDefending = true;
@@ -740,8 +737,8 @@ public class test {
         System.out.println("=================================================\n");
     }
 
-    //slime sprite
-    public static void slime(){
+    // slime sprite
+    public static void slime() {
         System.out.println("                    .##############.                      ");
         System.out.println("                 ####*==============*####                 ");
         System.out.println("              =##++======================##=              ");
@@ -757,4 +754,3 @@ public class test {
         System.out.println("              -############################=              ");
     }
 }
-
