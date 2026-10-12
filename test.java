@@ -158,9 +158,10 @@ public class test {
         System.out.println("amazing weapons here, and they're all different.\"");
         System.out.println("----------------------------------------------------------------------");
         pause();
+        clearScreen();
     }
 
-    // mage sprite
+    // tank sprite
     public static void tank() {
 
         System.out.println("                                                         ++-:  ::+");
@@ -192,7 +193,7 @@ public class test {
         System.out.println("                                  #::..*-                         ");
     }
 
-    // fighter sprite
+    // mage sprite
     public static void mage() {
         System.out.println("                                        %%%%-                      ");
         System.out.println("                                    :+#***##%*                     ");
@@ -221,7 +222,7 @@ public class test {
         System.out.println("                           ***=:..    %%%%%                        ");
     }
 
-    // tank sprite
+    // fighter sprite
     public static void fighter() {
         System.out.println("         *#+                   .-+***+                    ");
         System.out.println("          +#*+               =**++++++#-                  ");
@@ -291,34 +292,31 @@ public class test {
 
             boolean roleChosen = true;
             switch (choice.toLowerCase()) {
-                case "1":
-                case "mage":
+                case "1", "mage" -> {
                     playerRole = "Mage";
                     playerHp = 10;
                     playerMaxHp = 10;
                     playerDef = 3;
                     playerMaxDef = 3;
-                    break;
-                case "2":
-                case "fighter":
+                }
+                case "2", "fighter" -> {
                     playerRole = "Fighter";
                     playerHp = 12;
                     playerMaxHp = 12;
                     playerDef = 4;
                     playerMaxDef = 4;
-                    break;
-                case "3":
-                case "tank":
+                }
+                case "3", "tank" -> {
                     playerRole = "Tank";
                     playerHp = 15;
                     playerMaxHp = 15;
                     playerDef = 5;
                     playerMaxDef = 5;
-                    break;
-                default:
+                }
+                default -> {
                     System.out.println("Invalid selection. Please choose 1, 2, or 3.");
                     roleChosen = false;
-                    break;
+                }
             }
 
             if (roleChosen) {
@@ -397,18 +395,10 @@ public class test {
 
         // Display the sprite based on the current role
         switch (playerRole.toLowerCase()) {
-            case "mage":
-                mage();
-                break;
-            case "fighter":
-                fighter();
-                break;
-            case "tank":
-                tank();
-                break;
-            default:
-                System.out.println("Invalid role. Please select a role again.");
-                break;
+            case "mage" -> mage();
+            case "fighter" -> fighter();
+            case "tank" -> tank();
+            default -> System.out.println("Invalid role. Please select a role again.");
         }
 
         System.out.println("-------------------------------------------------");
@@ -436,26 +426,18 @@ public class test {
             clearScreen(2);
 
             switch (choice) {
-                case "1":
+                case "1" -> {
                     System.out.println("\nCharacter confirmed! Moving to the next scene...\n");
                     return;
-
-                case "2":
-                    chooseRole();
-                    break;
-
-                case "3":
-                    chooseGender();
-                    break;
-
-                case "4":
-                    inputName();
-                    break;
-
-                default:
+                }
+                case "2" -> chooseRole();
+                case "3" -> chooseGender();
+                case "4" -> inputName();
+                default -> {
                     System.out.println("Invalid selection. Please choose 1, 2, 3, or 4.");
                     clearScreen(2);
                     continue;
+                }
             }
 
             clearScreen(2);
@@ -468,20 +450,20 @@ public class test {
             System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
 
             switch (playerRole.toLowerCase()) {
-                case "fighter":
+                case "fighter" -> {
                     System.out.println("[1] Bow (+10 Damage)");
                     System.out.println("[2] Sword (+10 Damage)");
                     System.out.println("[3] Crossbow (+12 Damage)");
-                    break;
-                case "tank":
+                }
+                case "tank" -> {
                     System.out.println("[1] Sword and Shield (+7 Damage, +6 Defense)");
                     System.out.println("[2] Warhammer (+8 Damage, +4 Defense)");
                     System.out.println("[3] Polearm (+10 Damage, +3 Defense)");
-                    break;
-                case "mage":
+                }
+                case "mage" -> {
                     System.out.println("[1] Ice Wand (+12 Damage)");
                     System.out.println("[2] Fire Staff (+12 Damage)");
-                    break;
+                }
             }
 
             System.out.print("Enter your choice: ");
@@ -489,86 +471,78 @@ public class test {
             boolean weaponChosen = true;
 
             switch (playerRole.toLowerCase()) {
-                case "fighter":
+                case "fighter" -> {
                     switch (choice.toLowerCase()) {
-                        case "1":
-                        case "bow":
+                        case "1", "bow" -> {
                             playerWeapon = "Bow";
                             attackBonus += 10;
                             System.out.println("Bow added to inventory (+10 Damage).");
-                            break;
-                        case "2":
-                        case "sword":
+                        }
+                        case "2", "sword" -> {
                             playerWeapon = "Sword";
                             attackBonus += 10;
                             System.out.println("Sword added to inventory (+10 Damage).");
-                            break;
-                        case "3":
-                        case "crossbow":
+                        }
+                        case "3", "crossbow" -> {
                             playerWeapon = "Crossbow";
                             attackBonus += 12;
                             System.out.println("Crossbow added to inventory (+12 Damage).");
-                            break;
-                        default:
+                        }
+                        default -> {
                             System.out.println("Invalid Option. Try again.");
                             weaponChosen = false;
-                            break;
+                        }
                     }
-                    break;
+                }
 
-                case "tank":
+                case "tank" -> {
                     switch (choice.toLowerCase()) {
-                        case "1":
-                        case "sword and shield":
+                        case "1", "sword and shield" -> {
                             playerWeapon = "Sword and Shield";
                             attackBonus += 7;
                             playerDef += 6;
                             playerMaxDef += 6;
                             System.out.println("Sword and Shield added to inventory (+7 Damage, +6 Defense).");
-                            break;
-                        case "2":
-                        case "warhammer":
+                        }
+                        case "2", "warhammer" -> {
                             playerWeapon = "Warhammer";
                             attackBonus += 8;
                             playerDef += 4;
                             playerMaxDef += 4;
                             System.out.println("Warhammer added to inventory (+8 Damage, +4 Defense).");
-                            break;
-                        case "3":
-                        case "polearm":
+                        }
+                        case "3", "polearm" -> {
                             playerWeapon = "Polearm";
                             attackBonus += 10;
                             playerDef += 3;
                             playerMaxDef += 3;
                             System.out.println("Polearm added to inventory (+10 Damage, +3 Defense).");
-                            break;
-                        default:
+                        }
+                        default -> {
                             System.out.println("Invalid Option. Try again.");
                             weaponChosen = false;
-                            break;
+                        }
                     }
-                    break;
+                }
 
-                case "mage":
+                case "mage" -> {
                     switch (choice.toLowerCase()) {
-                        case "1":
-                        case "ice wand":
+                        case "1", "ice wand" -> {
                             playerWeapon = "Ice Wand";
                             attackBonus += 12;
                             System.out.println("Ice Wand added to inventory (+12 Damage).");
-                            break;
-                        case "2":
-                        case "fire staff":
+                        }
+                        case "2", "fire staff" -> {
                             playerWeapon = "Fire Staff";
                             attackBonus += 12;
                             System.out.println("Fire Staff added to inventory (+12 Damage).");
-                            break;
-                        default:
+                        }
+                        default -> {
                             System.out.println("Invalid Option. Try again.");
                             weaponChosen = false;
-                            break;
+                        }
                     }
-                    break;
+                }
             }
 
             if (weaponChosen) {
@@ -596,6 +570,7 @@ public class test {
         System.out.println("untouched. " + playerName + " realizes the slime must be stopped before");
         System.out.println("things get worse!");
         System.out.println("----------------------------------------------------------------------");
+        slime();
         pause();
 
         // Slime ambushes the player from behind before the player can act
@@ -627,6 +602,7 @@ public class test {
         System.out.println(playerName + " decides to fight. If the goblin is defeated, it will no");
         System.out.println("longer be a problem for the village.");
         System.out.println("----------------------------------------------------------------------");
+        goblin();
         pause();
 
         executeBattle("Goblin", 10, "Axe Swing", 5, false, false);
@@ -653,6 +629,7 @@ public class test {
         System.out.println("Then a zombie comes out of the darkness and tries to bite!");
         System.out.println("Startled, " + playerName + " fights back, determined to make it home.");
         System.out.println("----------------------------------------------------------------------");
+        zombie();
         pause();
 
         executeBattle("Zombie", 15, "Bite", 7, false, false);
@@ -991,43 +968,36 @@ public class test {
 
     // Calculates attack damage according to role + level up bonus
     public static int getPlayerAttackDamage() {
-        int baseDmg;
-        switch (playerRole.toLowerCase()) {
-            case "mage":
-                baseDmg = 6;
-                break;
-            case "tank":
-                baseDmg = 4;
-                break;
-            default: // Fighter
-                baseDmg = 5;
-                break;
-        }
+        int baseDmg = switch (playerRole.toLowerCase()) {
+            case "mage" -> 6;
+            case "tank" -> 4;
+            default -> 5; // Fighter
+        };
         return baseDmg + attackBonus;
     }
 
     public static void upgradeAfterBattle() {
         System.out.println("\n---------------- VICTORY UPGRADE ----------------");
-        int atkUp = 0;
-        int defUp = 0;
-        int hpUp = 0;
+        int atkUp;
+        int defUp;
+        int hpUp;
 
         switch (playerRole.toLowerCase()) {
-            case "mage":
+            case "mage" -> {
                 atkUp = 14;
                 defUp = 3;
                 hpUp = 18;
-                break;
-            case "tank":
+            }
+            case "tank" -> {
                 atkUp = 10;
                 defUp = 5;
                 hpUp = 25;
-                break;
-            default: // Fighter
+            }
+            default -> { // Fighter
                 atkUp = 12;
                 defUp = 4;
                 hpUp = 20;
-                break;
+            }
         }
 
         System.out.println("Choose an upgrade:");
@@ -1056,18 +1026,11 @@ public class test {
         System.out.println("\n=================================================");
         System.out.println("       " + diff.toUpperCase() + " DIFFICULTY CLEARED MILESTONE!    ");
         System.out.println("=================================================");
-        int hpUp;
-        switch (playerRole.toLowerCase()) {
-            case "mage":
-                hpUp = 35;
-                break;
-            case "tank":
-                hpUp = 55;
-                break;
-            default: // Fighter
-                hpUp = 45;
-                break;
-        }
+        int hpUp = switch (playerRole.toLowerCase()) {
+            case "mage" -> 35;
+            case "tank" -> 55;
+            default -> 45; // Fighter
+        };
 
         System.out.println("Choose Milestone Bonus:");
         System.out.println("[1] Massive Vitality (+" + hpUp + " Max HP & Full Heal)");
