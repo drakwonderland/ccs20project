@@ -8,6 +8,7 @@ public class test {
     static String playerRole = "";
     static String playerName = "";
     static String playerGender = "";
+    static String playerWeapon = "";
     static int playerHp = 0;
     static int playerMaxHp = 0;
     static int playerDef = 0;
@@ -384,6 +385,7 @@ public class test {
             } else if (playerRole.equals("Tank")) {
                 System.out.println("[1] Sword and Shield");
                 System.out.println("[2] Warhammer");
+                System.out.println("[3] Polearm");
 
             } else if (playerRole.equals("Mage")) {
                 System.out.println("[1] Ice Wand");
@@ -393,40 +395,51 @@ public class test {
             System.out.print("Enter your choice: ");
             String choice = scanner.nextLine().trim();
 
+            // FIGHTER WEAPONS
             if (playerRole.equals("Fighter")) {
-                if (choice.equals("1")) {
+                if (choice.equals("1") || choice.equalsIgnoreCase("Bow")) {
+                    playerWeapon = "Bow";
                     System.out.println("Bow added to inventory.");
                     break;
-                } else if (choice.equals("2")) {
+                } else if (choice.equals("2") || choice.equalsIgnoreCase("Sword")) {
+                    playerWeapon = "Sword";
                     System.out.println("Sword added to inventory.");
                     break;
-                } else if (choice.equals("3")) {
+                } else if (choice.equals("3") || choice.equalsIgnoreCase("Crossbow")) {
+                    playerWeapon = "Crossbow";
                     System.out.println("Crossbow added to inventory.");
                     break;
                 } else {
                     System.out.println("Invalid Option. Try again.");
                 }
 
+            // TANK WEAPONS
             } else if (playerRole.equals("Tank")) {
-                if (choice.equals("1")) {
+                if (choice.equals("1") || choice.equalsIgnoreCase("Sword and Shield")) {
+                    playerWeapon = "Sword and Shield";
                     System.out.println("Sword and Shield added to inventory.");
                     break;
-                } else if (choice.equals("2")) {
+                } else if (choice.equals("2") || choice.equalsIgnoreCase("Warhammer")) {
+                    playerWeapon = "Warhammer";
                     System.out.println("Warhammer added to inventory.");
                     break;
-                } else if (choice.equals("3")) {
+                } else if (choice.equals("3") || choice.equalsIgnoreCase("Polearm")) {
+                    playerWeapon = "Polearm";
                     System.out.println("Polearm added to inventory.");
                     break;
                 } else {
                     System.out.println("Invalid Option. Try again.");
                 }
 
+            // MAGE WEAPONS
             } else if (playerRole.equals("Mage")) {
-                if (choice.equals("1")) {
-                    System.out.println("Ice wand added to inventory.");
+                if (choice.equals("1") || choice.equalsIgnoreCase("Ice Wand")) {
+                    playerWeapon = "Ice Wand";
+                    System.out.println("Ice Wand added to inventory.");
                     break;
-                } else if (choice.equals("2")) {
-                    System.out.println("Fire staff added to inventory.");
+                } else if (choice.equals("2") || choice.equalsIgnoreCase("Fire Staff")) {
+                    playerWeapon = "Fire Staff";
+                    System.out.println("Fire Staff added to inventory.");
                     break;
                 } else {
                     System.out.println("Invalid Option. Try again.");
@@ -539,7 +552,8 @@ public class test {
                             "The Dirt Golem's stone shield BLOCKED your attack! (Shields left: " + golemShields + ")");
                 } else {
                     currentMonsterHp -= damageDealt;
-                    System.out.println("You attacked and dealt " + damageDealt + " damage to " + monsterName + "!");
+                    String weaponUsed = playerWeapon.isEmpty() ? "weapon" : playerWeapon;
+                    System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt + " damage to " + monsterName + "!");
                 }
             } else if (action.equals("2") || action.equalsIgnoreCase("defend")) {
                 isDefending = true;
