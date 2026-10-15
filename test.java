@@ -4,7 +4,7 @@ public class test {
 
     static Scanner scanner = new Scanner(System.in);
 
-    // Player Role and Health
+    // Player Role and Combat Attributes
     static String playerRole = "";
     static String playerName = "";
     static String playerGender = "";
@@ -21,7 +21,7 @@ public class test {
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
         System.out.println("Welcome to the text-based adventure!    \n");
-        Thread.sleep(2000); // Wait 2 seconds
+        Thread.sleep(2000);
 
         System.out.println("\n");
         if (!startMenu()) {
@@ -45,9 +45,9 @@ public class test {
         System.out.println("\n=================================================");
         System.out.println("               ROLE SELECTION COMPLETE           ");
         System.out.println("=================================================");
-        System.out.println("Role    : " + playerRole);
-        System.out.println("Base HP : " + playerHp + " / " + playerMaxHp);
-        System.out.println("Base Defense: " + playerDef + "/" + playerMaxDef);
+        System.out.println("Role        : " + playerRole);
+        System.out.println("Base HP     : " + playerHp + " / " + playerMaxHp);
+        System.out.println("Base Defense: " + playerDef + " / " + playerMaxDef);
         System.out.println("-------------------------------------------------");
         System.out.println("Status: Role and HP successfully assigned!");
         System.out.println("=================================================");
@@ -79,7 +79,7 @@ public class test {
             System.out.print("Enter choice (1 or 2): ");
             String choice = scanner.nextLine().trim();
 
-            if (choice.equals("1") || choice.equalsIgnoreCase("continue")) {
+            if (choice.equals("1") || choice.equalsIgnoreCase("continue") || choice.equalsIgnoreCase("next")) {
                 return true;
             } else if (choice.equals("2") || choice.equalsIgnoreCase("exit")) {
                 return false;
@@ -89,7 +89,7 @@ public class test {
         }
     }
 
-    // tree house story method
+    // 1. Tree house story method
     public static void treehouseScene() {
         System.out.println("\n======================================================================");
         System.out.println("                  1. THE TREE HOUSE - THE BEGINNING                   ");
@@ -105,7 +105,7 @@ public class test {
         System.out.println();
         System.out.println("           They explain that they got them through their              ");
         System.out.println("           adventures. Then, one friend hands you a                   ");
-        System.out.println("           mysterious necklace: ");
+        System.out.println("           mysterious necklace:                                       ");
         System.out.println("           \"Here. Try this on.\"                                      ");
         System.out.println();
         System.out.println("           You wear the necklace around your neck.                    ");
@@ -118,7 +118,7 @@ public class test {
     }
 
     // 2. Choosing a Role - Dialogue & Departure
-    public static void treehouseDeparture() throws InterruptedException {
+    public static void treehouseDeparture() {
         System.out.println("\n======================================================================");
         System.out.println("                 2. DEPARTURE FOR THE VILLAGE MARKET                  ");
         System.out.println("======================================================================");
@@ -144,7 +144,7 @@ public class test {
     }
 
     // 3. The Market: Getting the Weapon
-    public static void marketArrival() throws InterruptedException {
+    public static void marketArrival() {
         System.out.println("\n======================================================================");
         System.out.println("            VILLAGE SCENERIES (Easy) - THE MARKET                     ");
         System.out.println("======================================================================");
@@ -161,9 +161,8 @@ public class test {
         clearScreen();
     }
 
-    // tank sprite
+    // Tank sprite
     public static void tank() {
-
         System.out.println("                                                         ++-:  ::+");
         System.out.println("                                                    .-*+  .:---*  ");
         System.out.println("                                                 +*..  --:-%+..   ");
@@ -193,7 +192,7 @@ public class test {
         System.out.println("                                  #::..*-                         ");
     }
 
-    // mage sprite
+    // Mage sprite
     public static void mage() {
         System.out.println("                                        %%%%-                      ");
         System.out.println("                                    :+#***##%*                     ");
@@ -222,7 +221,7 @@ public class test {
         System.out.println("                           ***=:..    %%%%%                        ");
     }
 
-    // fighter sprite
+    // Fighter sprite
     public static void fighter() {
         System.out.println("         *#+                   .-+***+                    ");
         System.out.println("          +#*+               =**++++++#-                  ");
@@ -250,44 +249,40 @@ public class test {
         System.out.println("                        =%####%*       +##%%-             ");
     }
 
-    // choose your role method
+    // Choose your role method (Keeps all 3 options visible for selection)
     public static void chooseRole() throws InterruptedException {
+        System.out.println("\n---------------- CHOOSE YOUR ROLE ----------------\n");
+
+        mage();
+        System.out.println("===================================================");
+        System.out.println("|                     [1] MAGE                     |");
+        System.out.println("|         High magic power, casts spells with      |");
+        System.out.println("|         devastating damage.                      |");
+        System.out.println("|                     HP: 10/10                    |");
+        System.out.println("|                     Def: 3/3                     |");
+        System.out.println("---------------------------------------------------\n");
+        Thread.sleep(1000);
+
+        fighter();
+        System.out.println("===================================================");
+        System.out.println("|                    [2] FIGHTER                   |");
+        System.out.println("|        Balanced warrior, uses blade and bow      |");
+        System.out.println("|                     HP: 12/12                    |");
+        System.out.println("|                     Def: 4/4                     |");
+        System.out.println("---------------------------------------------------\n");
+        Thread.sleep(1000);
+
+        tank();
+        System.out.println("\n===================================================");
+        System.out.println("|                     [3] TANK                     |");
+        System.out.println("|     High defense, but their heavy armor makes    |");
+        System.out.println("|     them slow.                                   |");
+        System.out.println("|                     HP: 15/15                    |");
+        System.out.println("|                     Def: 5/5                     |");
+        System.out.println("---------------------------------------------------");
+
         while (true) {
-            System.out.println("\n---------------- CHOOSE YOUR ROLE ----------------\n");
-
-            mage();
-
-            System.out.println("===================================================");
-            System.out.println("|                     [1] MAGE                     |");
-            System.out.println("|         High magic power, casts spells with      |");
-            System.out.println("|         devastating damage.                      |");
-            System.out.println("|                     HP: 10/10                    |");
-            System.out.println("|                     Def: 3/3                     |");
-            System.out.println("---------------------------------------------------\n");
-            clearScreen(2);
-
-            fighter();
-
-            System.out.println("===================================================");
-            System.out.println("|                    [2] FIGHTER                   |");
-            System.out.println("|        Balanced warrior, uses blade and bow      |");
-            System.out.println("|                     HP: 12/12                    |");
-            System.out.println("|                     Def: 4/4                     |");
-            System.out.println("---------------------------------------------------\n");
-            clearScreen(2);
-
-            tank();
-
-            System.out.println("\n===================================================");
-            System.out.println("|                     [3] TANK                     |");
-            System.out.println("|     High defense, but their heavy armor makes    |");
-            System.out.println("|     them slow.                                   |");
-            System.out.println("|                     HP: 15/15                    |");
-            System.out.println("|                     Def: 5/5                     |");
-            System.out.println("---------------------------------------------------");
-            Thread.sleep(2000); // Wait 2 seconds
-
-            System.out.print("Enter your choice (1-3): ");
+            System.out.print("Enter your choice ([1] Mage, [2] Fighter, [3] Tank): ");
             String choice = scanner.nextLine().trim();
 
             boolean roleChosen = true;
@@ -314,7 +309,7 @@ public class test {
                     playerMaxDef = 5;
                 }
                 default -> {
-                    System.out.println("Invalid selection. Please choose 1, 2, or 3.");
+                    System.out.println("Invalid selection. Please choose 1, 2, or 3.\n");
                     roleChosen = false;
                 }
             }
@@ -328,13 +323,13 @@ public class test {
                 + playerDef + " Def!");
     }
 
-    // pause method
+    // Pause method
     public static void pause() {
         System.out.print("Press [ENTER] to continue...");
         scanner.nextLine();
     }
 
-    // Clear screen helper methods
+    // Overloaded clear screen helper methods
     public static void clearScreen() {
         System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
@@ -351,7 +346,7 @@ public class test {
         clearScreen();
     }
 
-    // choose your gender method
+    // Choose your gender method
     public static void chooseGender() {
         while (true) {
             System.out.println("\n---------------- CHOOSE YOUR GENDER ----------------");
@@ -373,7 +368,7 @@ public class test {
         System.out.println("\nGender assigned: " + playerGender);
     }
 
-    // input name method
+    // Input name method
     public static void inputName() {
         System.out.println("\n---------------- CHARACTER NAME ----------------");
         System.out.print("Enter character name: ");
@@ -393,7 +388,6 @@ public class test {
         System.out.println("               CHARACTER SUMMARY                 ");
         System.out.println("=================================================");
 
-        // Display the sprite based on the current role
         switch (playerRole.toLowerCase()) {
             case "mage" -> mage();
             case "fighter" -> fighter();
@@ -410,7 +404,7 @@ public class test {
         System.out.println("=================================================");
     }
 
-    // confirm your character profile
+    // Confirm your character profile
     public static void confirmCharacter() throws InterruptedException {
         while (true) {
             displaySummary();
@@ -444,7 +438,7 @@ public class test {
         }
     }
 
-    // choose your weapon
+    // Choose your weapon
     public static void chooseWeapon() {
         while (true) {
             System.out.println("\n---------------- PICK YOUR WEAPON ----------------");
@@ -605,7 +599,7 @@ public class test {
         goblin();
         pause();
 
-        executeBattle("Goblin", 10, "Axe Swing", 5, false, false);
+        executeBattle("Goblin", 15, "Axe Swing", 5, false, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println(playerName + " sits on a fallen log at the roadside, wipes off the dust,");
@@ -632,7 +626,7 @@ public class test {
         zombie();
         pause();
 
-        executeBattle("Zombie", 15, "Bite", 7, false, false);
+        executeBattle("Zombie", 25, "Bite", 7, false, false);
 
         upgradeAfterDifficulty("Village Sceneries (Easy)");
 
@@ -653,7 +647,7 @@ public class test {
         serpent();
         pause();
 
-        executeBattle("Serpent", 100, "Coil", 10, false, false);
+        executeBattle("Serpent", 50, "Coil", 10, false, false);
         upgradeAfterBattle();
 
         // 8. Werewolf Scene
@@ -672,7 +666,7 @@ public class test {
         System.out.println("----------------------------------------------------------------------");
         pause();
 
-        executeBattle("Werewolf", 150, "Quick Attack", 12, false, false);
+        executeBattle("Werewolf", 80, "Quick Attack", 12, false, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("Once the howling fades, " + playerName + " sinks to the ground, finishes");
@@ -698,7 +692,7 @@ public class test {
         pause();
 
         // Dirt Golem has the 2-hit shield block enabled
-        executeBattle("Dirt Golem", 450, "Dirt Swing", 8, true, false);
+        executeBattle("Dirt Golem", 120, "Dirt Swing", 14, true, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("After the golem crumbles back into the earth, " + playerName + " takes");
@@ -725,7 +719,8 @@ public class test {
         System.out.println("----------------------------------------------------------------------");
         pause();
 
-        executeBattle("Drow", 200, "Sword Slash", 14, false, false);
+        // Drow strikes first (isAmbush = true)
+        executeBattle("Drow", 150, "Sword Slash", 16, false, false, true);
 
         System.out.println("\n[SHORT REST]");
         System.out.println(playerName + " ducks behind a mossy boulder, catches a breath, and checks");
@@ -742,15 +737,16 @@ public class test {
         System.out.println("      DUNGEON SCENERIES (HARD) - 11. THE NECROMANCER                  ");
         System.out.println("======================================================================");
         System.out.println("Just as " + playerName + " tries to leave, a necromancer appears and blocks");
-        System.out.println("the way. The drow was a companion, and the necromancer won't let " + playerName);
-        System.out.println("escape after what was done to it!");
+        System.out.println("the way, summoning a skeletal guardian from the shadows! The drow was a");
+        System.out.println("companion, and the necromancer won't let " + playerName + " escape!");
         System.out.println();
         System.out.println("The two clash in a fierce duel of dark sorcery and resolve!");
         System.out.println("----------------------------------------------------------------------");
+        skeleton();
         pause();
 
         // Necromancer has the Life Siphon heal enabled
-        executeBattle("Necromancer", 300, "Life Siphon", 16, false, true);
+        executeBattle("Necromancer", 190, "Life Siphon", 18, false, true);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("With the necromancer defeated, " + playerName + " hurries away from that");
@@ -776,7 +772,9 @@ public class test {
         System.out.println("----------------------------------------------------------------------");
         pause();
 
-        executeBattle("Red Dragon", 666, "Fire Breath", 18, false, false);
+        // Balanced to 250 HP for smooth demo pacing (change 250 to 666 if you want the
+        // meme number)
+        executeBattle("Red Dragon", 250, "Fire Breath", 20, false, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("After the dragon is defeated, it calms down and realizes that " + playerName);
@@ -788,6 +786,8 @@ public class test {
         System.out.println("They rest together for a while before setting off.");
         Thread.sleep(2000);
         pause();
+
+        upgradeAfterDifficulty("Dungeon Sceneries (Hard)");
 
         // ----------------- 13. THE FINAL BATTLE: SIR LESTER -----------------
         clearScreen(1);
@@ -806,7 +806,9 @@ public class test {
         System.out.println("----------------------------------------------------------------------");
         pause();
 
-        executeBattle("Sir Lester (The Boss)", 999, "Boss Slam", 8, false, false);
+        // Balanced to 350 HP for smooth demo pacing (change 350 to 999 if you want the
+        // meme number)
+        executeBattle("Sir Lester (The Boss)", 350, "Boss Slam", 22, false, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("Sir Lester finally falls! Everyone collapses on the ground, laughing");
@@ -833,12 +835,14 @@ public class test {
         System.out.println("======================================================================");
     }
 
+    // Overloaded method for normal battles (isAmbush defaults to false)
     public static void executeBattle(String monsterName, int monsterHp, String monsterAtkName,
             int monsterBaseDmg, boolean isDirtGolem, boolean isNecro)
             throws InterruptedException {
         executeBattle(monsterName, monsterHp, monsterAtkName, monsterBaseDmg, isDirtGolem, isNecro, false);
     }
 
+    // Main turn-based combat engine
     public static void executeBattle(String monsterName, int monsterHp, String monsterAtkName,
             int monsterBaseDmg, boolean isDirtGolem, boolean isNecro, boolean isAmbush)
             throws InterruptedException {
@@ -861,13 +865,15 @@ public class test {
         if (isAmbush) {
             System.out.println("\n[AMBUSH!] The " + monsterName + " strikes from behind before you can react!");
             Thread.sleep(1200);
-            int ambushDmg = monsterBaseDmg;
+            int ambushDmg = Math.max(1, monsterBaseDmg - playerDef);
             playerHp -= ambushDmg;
-            if (playerHp < 0)
+            if (playerHp < 0) {
                 playerHp = 0;
+            }
             System.out.println(monsterName + " hits you with [" + monsterAtkName + "] for " + ambushDmg + " damage!");
             System.out.println("Current HP: " + playerHp + "/" + playerMaxHp);
-            System.out.println("You quickly draw your " + (playerWeapon.isEmpty() ? "weapon" : playerWeapon) + " to fight back!");
+            System.out.println(
+                    "You quickly draw your " + (playerWeapon.isEmpty() ? "weapon" : playerWeapon) + " to fight back!");
             Thread.sleep(1800);
         }
 
@@ -879,9 +885,19 @@ public class test {
                     + " | DEF: " + playerDef);
             System.out.println(monsterName + " HP: " + currentMonsterHp + "/" + monsterHp);
             System.out.println("-------------------------------------------------");
-            System.out.println("Choose action: [1] Attack  [2] Defend");
-            System.out.print("Action: ");
-            String action = scanner.nextLine().trim();
+
+            // Input validation loop so typos don't forfeit the player's turn
+            String action;
+            while (true) {
+                System.out.println("Choose action: [1] Attack  [2] Defend");
+                System.out.print("Action: ");
+                action = scanner.nextLine().trim();
+                if (action.equals("1") || action.equalsIgnoreCase("attack")
+                        || action.equals("2") || action.equalsIgnoreCase("defend")) {
+                    break;
+                }
+                System.out.println("Invalid action! Please enter 1 to Attack or 2 to Defend.\n");
+            }
 
             // Player Turn
             if (action.equals("1") || action.equalsIgnoreCase("attack")) {
@@ -893,23 +909,26 @@ public class test {
                             "The Dirt Golem's stone shield BLOCKED your attack! (Shields left: " + golemShields + ")");
                 } else {
                     currentMonsterHp -= damageDealt;
+                    if (currentMonsterHp < 0) {
+                        currentMonsterHp = 0;
+                    }
                     String weaponUsed = playerWeapon.isEmpty() ? "weapon" : playerWeapon;
                     System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt
                             + " damage to " + monsterName + "!");
 
                     // Werewolf Frenzy trigger when HP falls to or below 50%
-                    if (isWerewolf && !werewolfFrenzied && currentMonsterHp > 0 && currentMonsterHp <= (monsterHp / 2)) {
+                    if (isWerewolf && !werewolfFrenzied && currentMonsterHp > 0
+                            && currentMonsterHp <= (monsterHp / 2)) {
                         werewolfFrenzied = true;
                         werewolfFrenzyTurns = 3;
-                        System.out.println("\n[FRENZY!] The Werewolf's HP dropped below 50% (" + currentMonsterHp + "/" + monsterHp + ")!");
+                        System.out.println("\n[FRENZY!] The Werewolf's HP dropped below 50% (" + currentMonsterHp + "/"
+                                + monsterHp + ")!");
                         System.out.println("It howls in rage and enters a FRENZY (+7 Attack for 3 rounds)!");
                     }
                 }
-            } else if (action.equals("2") || action.equalsIgnoreCase("defend")) {
+            } else {
                 isDefending = true;
                 System.out.println("You braced yourself! (Incoming damage reduced)");
-            } else {
-                System.out.println("You hesitated and lost your chance to act!");
             }
 
             // Check if Monster Died
@@ -926,13 +945,15 @@ public class test {
             int currentMonsterDmg = monsterBaseDmg;
             if (isWerewolf && werewolfFrenzyTurns > 0) {
                 currentMonsterDmg += 7;
-                System.out.println(">> FRENZY ACTIVE: " + monsterName + " gains +7 ATK! (" + werewolfFrenzyTurns + " rounds left) <<");
+                System.out.println(">> FRENZY ACTIVE: " + monsterName + " gains +7 ATK! (" + werewolfFrenzyTurns
+                        + " rounds left) <<");
                 werewolfFrenzyTurns--;
             }
 
             boolean isLester = monsterName.toLowerCase().contains("lester");
             if (isLester && Math.random() < 0.70) {
-                System.out.println(monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (70% Miss Chance)");
+                System.out.println(
+                        monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (70% Miss Chance)");
             } else {
                 System.out.println(monsterName + " uses [" + monsterAtkName + "] (" + currentMonsterDmg + " DMG)!");
 
@@ -940,10 +961,11 @@ public class test {
                 int damageTaken = Math.max(1, currentMonsterDmg - effectiveDef);
 
                 playerHp -= damageTaken;
-                if (playerHp < 0)
+                if (playerHp < 0) {
                     playerHp = 0;
-                System.out
-                        .println("You took " + damageTaken + " damage! (Current HP: " + playerHp + "/" + playerMaxHp + ")");
+                }
+                System.out.println(
+                        "You took " + damageTaken + " damage! (Current HP: " + playerHp + "/" + playerMaxHp + ")");
             }
 
             // Necromancer Life Siphon mechanic
@@ -957,7 +979,6 @@ public class test {
                 System.out.println("\nYou were defeated by " + monsterName + "!");
                 System.out.println("Recovering HP and restarting this battle...\n");
                 Thread.sleep(2000);
-                // Restart this battle
                 currentMonsterHp = monsterHp;
                 golemShields = isDirtGolem ? 2 : 0;
                 werewolfFrenzied = false;
@@ -1005,20 +1026,34 @@ public class test {
         System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG)");
         System.out.println("[2] Upgrade Defense (+" + defUp + " DEF)");
         System.out.println("[3] Upgrade Health (+" + hpUp + " Max HP & Heal)");
-        System.out.print("Choice: ");
-        String choice = scanner.nextLine().trim();
 
-        if (choice.equals("2") || choice.equalsIgnoreCase("defense") || choice.equalsIgnoreCase("def")) {
-            playerDef += defUp;
-            playerMaxDef += defUp;
-            System.out.println("Defense increased by +" + defUp + "! (Total DEF: " + playerDef + ")");
-        } else if (choice.equals("3") || choice.equalsIgnoreCase("health") || choice.equalsIgnoreCase("hp")) {
-            playerMaxHp += hpUp;
-            playerHp += hpUp;
-            System.out.println("Max HP increased by +" + hpUp + "! (Current HP: " + playerHp + "/" + playerMaxHp + ")");
-        } else {
-            attackBonus += atkUp;
-            System.out.println("Weapon Attack increased by +" + atkUp + "! (Total Attack Bonus: +" + attackBonus + ")");
+        while (true) {
+            System.out.print("Choice (1-3): ");
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            switch (choice) {
+                case "1", "attack", "atk" -> {
+                    attackBonus += atkUp;
+                    System.out.println(
+                            "Weapon Attack increased by +" + atkUp + "! (Total Attack Bonus: +" + attackBonus + ")");
+                }
+                case "2", "defense", "def" -> {
+                    playerDef += defUp;
+                    playerMaxDef += defUp;
+                    System.out.println("Defense increased by +" + defUp + "! (Total DEF: " + playerDef + ")");
+                }
+                case "3", "health", "hp" -> {
+                    playerMaxHp += hpUp;
+                    playerHp = playerMaxHp;
+                    System.out.println(
+                            "Max HP increased by +" + hpUp + "! (Current HP: " + playerHp + "/" + playerMaxHp + ")");
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please enter 1, 2, or 3.");
+                    continue;
+                }
+            }
+            break;
         }
         System.out.println("-------------------------------------------------\n");
     }
@@ -1036,24 +1071,37 @@ public class test {
         System.out.println("Choose Milestone Bonus:");
         System.out.println("[1] Massive Vitality (+" + hpUp + " Max HP & Full Heal)");
         System.out.println("[2] Combat Mastery (+10 Attack & +6 Defense & Full Heal)");
-        System.out.print("Choice: ");
-        String choice = scanner.nextLine().trim();
 
-        if (choice.equals("2") || choice.equalsIgnoreCase("other") || choice.equalsIgnoreCase("mastery")) {
-            attackBonus += 10;
-            playerDef += 6;
-            playerMaxDef += 6;
-            playerHp = playerMaxHp;
-            System.out.println("Applied combat mastery: +10 Attack and +6 Defense! (HP fully restored to " + playerHp + "/" + playerMaxHp + "!)");
-        } else {
-            playerMaxHp += hpUp;
-            playerHp = playerMaxHp;
-            System.out.println("Vitality increased by +" + hpUp + "! Max HP is now " + playerMaxHp + " (Fully Healed)!");
+        while (true) {
+            System.out.print("Choice (1 or 2): ");
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            switch (choice) {
+                case "1", "vitality" -> {
+                    playerMaxHp += hpUp;
+                    playerHp = playerMaxHp;
+                    System.out.println(
+                            "Vitality increased by +" + hpUp + "! Max HP is now " + playerMaxHp + " (Fully Healed)!");
+                }
+                case "2", "mastery", "other" -> {
+                    attackBonus += 10;
+                    playerDef += 6;
+                    playerMaxDef += 6;
+                    playerHp = playerMaxHp;
+                    System.out.println("Applied combat mastery: +10 Attack and +6 Defense! (HP fully restored to "
+                            + playerHp + "/" + playerMaxHp + "!)");
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please enter 1 or 2.");
+                    continue;
+                }
+            }
+            break;
         }
         System.out.println("=================================================\n");
     }
 
-    // slime sprite
+    // Slime sprite
     public static void slime() {
         System.out.println("                    .##############.                      ");
         System.out.println("                 ####*==============*####                 ");
@@ -1070,8 +1118,8 @@ public class test {
         System.out.println("              -############################=              ");
     }
 
-        //goblin sprite
-     public static void goblin(){
+    // Goblin sprite
+    public static void goblin() {
         System.out.println("                  =-               -*                 ");
         System.out.println("                 ##**+- .+*%##+:-+****                ");
         System.out.println("                 ##+++*@#++++++##*+**=                ");
@@ -1087,8 +1135,8 @@ public class test {
         System.out.println("                 #@%#*++*@   #+++*#%@*.               ");
     }
 
-    //skeleton sprite
-    public static void skeleton(){
+    // Skeleton sprite
+    public static void skeleton() {
         System.out.println("                    @@@#@@@@@@%%@@%@@@#                   ");
         System.out.println("                    ###+######**##**##+                   ");
         System.out.println("                @@@:@@@#@@@@@@%%@@%@@@@@@@                ");
@@ -1115,8 +1163,8 @@ public class test {
         System.out.println("                    @@@:           @@@#                   ");
     }
 
-    //zombie sprite
-    public static void zombie(){
+    // Zombie sprite
+    public static void zombie() {
         System.out.println("                   .::::::                           ");
         System.out.println("                 -%*++++++##.                        ");
         System.out.println("                %###+++++++++#                       ");
@@ -1142,8 +1190,8 @@ public class test {
         System.out.println("           .::::.:.:.   ::::::::                     ");
     }
 
-    //serpent sprite
-    public static void serpent(){
+    // Serpent sprite
+    public static void serpent() {
         System.out.println("                    -%#----*%%.               ");
         System.out.println("                  ==:. ..:.   :-#             ");
         System.out.println("                +..        --:   =@           ");
