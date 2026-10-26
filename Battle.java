@@ -61,11 +61,14 @@ public class Battle {
         while (Player.hp > 0 && currentMonsterHp > 0) {
             boolean isDefending = false;
 
-            // Combat HUD
-            System.out.println("\n" + Player.name + " [" + Player.role + "] HP: " + Player.hp + "/" + Player.maxHp
-                    + " | DEF: " + Player.def);
-            System.out.println(monsterName + " HP: " + currentMonsterHp + "/" + monsterHp);
-            System.out.println("-------------------------------------------------");
+            // Combat HUD with aligned visual health bars
+            System.out.println("\n=================================================");
+            System.out.println("                   COMBAT HUD                    ");
+            System.out.println("=================================================");
+            enemyHealthBar(monsterName, currentMonsterHp, monsterHp);
+            System.out.println("  -----------------------------------------------");
+            healthBar();
+            System.out.println("=================================================");
 
             // Input validation loop so typos don't forfeit the player's turn
             String action;
@@ -287,5 +290,53 @@ public class Battle {
             break;
         }
         System.out.println("=================================================\n");
+    }
+
+    // ==========================================
+    // REUSABLE VISUAL HEALTH BAR METHODS
+    // ==========================================
+
+    /**
+     * Generates a reusable visual health bar string using solid block characters.
+     *
+     * @param currentHp Current health points
+     * @param maxHp     Maximum health points
+     * @param barLength Number of blocks in the bar
+     * @return Formatted string like "[████████░░] 80/100 HP"
+     */
+    public static String getHealthBar(int currentHp, int maxHp, int barLength) {
+        if (maxHp <= 0) {
+            maxHp = 1;
+        }
+        if (currentHp < 0) {
+            currentHp = 0;
+        }
+        if (currentHp > maxHp) {
+            currentHp = maxHp;
+        }
+
+        int filled = (int) Math.round(((double) currentHp / maxHp) * barLength);
+        if (currentHp > 0 && filled == 0) {
+            filled = 1; // Keep 1 pip visible if still alive
+        }
+        int empty = barLength - filled;
+
+        return "[" + "█".repeat(filled) + "░".repeat(empty) + "] " + currentHp + "/" + maxHp + " HP";
+    }
+
+    /**
+     * Displays the player's health bar and defense stats.
+     */
+    public static void healthBar() {
+        System.out.println("  " + Player.name + " [" + Player.role + "]  (DEF: " + Player.def + ")");
+        System.out.println("  HP  " + getHealthBar(Player.hp, Player.maxHp, 20));
+    }
+
+    /**
+     * Displays an enemy's health bar.
+     */
+    public static void enemyHealthBar(String enemyName, int currentHp, int maxHp) {
+        System.out.println("  " + enemyName);
+        System.out.println("  HP  " + getHealthBar(currentHp, maxHp, 20));
     }
 }
