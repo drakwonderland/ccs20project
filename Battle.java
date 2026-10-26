@@ -55,6 +55,32 @@ public class Battle {
             }
             System.out.println(monsterName + " hits you with [" + monsterAtkName + "] for " + ambushDmg + " damage!");
             System.out.println("Current HP: " + Player.hp + "/" + Player.maxHp);
+
+            // Ambush lethal check
+            if (Player.hp <= 0) {
+                Player.lives--;
+                System.out.println("\n*************************************************");
+                System.out.println("              YOU HAVE BEEN DEFEATED!            ");
+                System.out.println("*************************************************");
+                System.out.println(monsterName + " delivered a crushing ambush blow!");
+
+                if (Player.lives <= 0) {
+                    System.out.println("Lives remaining: 0 / " + Player.maxLives);
+                    System.out.println("\n=================================================");
+                    System.out.println("                    GAME OVER                    ");
+                    System.out.println("=================================================");
+                    System.out.println("You ran out of lives. Your adventure has ended.");
+                    System.out.println("Thank you for playing!");
+                    System.out.println("=================================================\n");
+                    System.exit(0);
+                }
+
+                System.out.println("Lives remaining: " + Player.lives + " / " + Player.maxLives);
+                System.out.println("Recovering HP and preparing to fight...\n");
+                Thread.sleep(2000);
+                Player.hp = Player.maxHp;
+            }
+
             System.out.println("You quickly draw your " + weaponUsed + " to fight back!");
             Thread.sleep(1800);
         }
@@ -78,14 +104,18 @@ public class Battle {
                 System.out.print("Action: ");
                 action = Main.scanner.nextLine().trim();
                 if (action.equals("1") || action.equalsIgnoreCase("attack")
-                        || action.equals("2") || action.equalsIgnoreCase("defend")) {
+                        || action.equalsIgnoreCase("atk") || action.equalsIgnoreCase("a")
+                        || action.equals("2") || action.equalsIgnoreCase("defend")
+                        || action.equalsIgnoreCase("def") || action.equalsIgnoreCase("d")) {
                     break;
                 }
                 System.out.println("Invalid action! Please enter 1 to Attack or 2 to Defend.\n");
             }
 
             // Player Turn
-            if (action.equals("1") || action.equalsIgnoreCase("attack")) {
+            boolean isAttack = action.equals("1") || action.equalsIgnoreCase("attack")
+                    || action.equalsIgnoreCase("atk") || action.equalsIgnoreCase("a");
+            if (isAttack) {
                 int damageDealt = getPlayerAttackDamage();
 
                 if (golemShields > 0) {
@@ -112,7 +142,11 @@ public class Battle {
                 }
             } else {
                 isDefending = true;
-                System.out.println("You braced yourself! (Incoming damage reduced)");
+                if (golemShields > 0) {
+                    System.out.println("You braced yourself! (Note: Dirt Golem shields only shatter when you ATTACK!)");
+                } else {
+                    System.out.println("You braced yourself! (Incoming damage reduced)");
+                }
             }
 
             // Check if Monster Died
@@ -218,7 +252,7 @@ public class Battle {
             case "mage" -> {
                 atkUp = 14;
                 defUp = 3;
-                hpUp = 18;
+                hpUp = 20;
             }
             case "tank" -> {
                 atkUp = 10;
@@ -232,10 +266,12 @@ public class Battle {
             }
         }
 
+        int hybridAtk = Player.role.equalsIgnoreCase("mage") ? 3 : 2;
+
         System.out.println("Choose an upgrade:");
-        System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG & +5 Max HP)");
-        System.out.println("[2] Upgrade Defense (+" + defUp + " DEF & +5 Max HP)");
-        System.out.println("[3] Upgrade Health (+" + hpUp + " Max HP & +2 DMG & Heal)");
+        System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG & +5 Max HP & Full Heal)");
+        System.out.println("[2] Upgrade Defense (+" + defUp + " DEF & +5 Max HP & Full Heal)");
+        System.out.println("[3] Upgrade Health (+" + hpUp + " Max HP & +" + hybridAtk + " DMG & Full Heal)");
 
         while (true) {
             System.out.print("Choice (1-3): ");
@@ -259,9 +295,9 @@ public class Battle {
                 }
                 case "3", "health", "hp" -> {
                     Player.maxHp += hpUp;
-                    Player.attackBonus += 2;
+                    Player.attackBonus += hybridAtk;
                     Player.hp = Player.maxHp;
-                    System.out.println("Max HP increased by +" + hpUp + " and Attack increased by +2! (Current HP: "
+                    System.out.println("Max HP increased by +" + hpUp + " and Attack increased by +" + hybridAtk + "! (Current HP: "
                             + Player.hp + "/" + Player.maxHp + ")");
                 }
                 default -> {
@@ -286,7 +322,7 @@ public class Battle {
 
         System.out.println("Choose Milestone Bonus:");
         System.out.println("[1] Massive Vitality (+" + hpUp + " Max HP & Full Heal)");
-        System.out.println("[2] Combat Mastery (+10 Attack & +6 Defense & Full Heal)");
+        System.out.println("[2] Combat Mastery (+10 Attack & +6 Defense & +15 Max HP & Full Heal)");
 
         while (true) {
             System.out.print("Choice (1 or 2): ");
@@ -299,12 +335,13 @@ public class Battle {
                     System.out.println(
                             "Vitality increased by +" + hpUp + "! Max HP is now " + Player.maxHp + " (Fully Healed)!");
                 }
-                case "2", "mastery", "other" -> {
+                case "2", "mastery", "combat", "other" -> {
                     Player.attackBonus += 10;
                     Player.def += 6;
                     Player.maxDef += 6;
+                    Player.maxHp += 15;
                     Player.hp = Player.maxHp;
-                    System.out.println("Applied combat mastery: +10 Attack and +6 Defense! (HP fully restored to "
+                    System.out.println("Applied combat mastery: +10 Attack, +6 Defense, and +15 Max HP! (HP fully restored to "
                             + Player.hp + "/" + Player.maxHp + "!)");
                 }
                 default -> {
