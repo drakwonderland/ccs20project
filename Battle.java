@@ -14,7 +14,23 @@ public class Battle {
             throws InterruptedException {
 
         int currentMonsterHp = monsterHp;
-        int golemShields = isDirtGolem ? 2 : 0;
+
+        // Dirt Golem starts with 2 shields, other monsters have none
+        int golemShields;
+        if (isDirtGolem) {
+            golemShields = 2;
+        } else {
+            golemShields = 0;
+        }
+
+        // Show "weapon" if the player has no weapon yet, otherwise the weapon's name
+        String weaponUsed;
+        if (Player.weapon.isEmpty()) {
+            weaponUsed = "weapon";
+        } else {
+            weaponUsed = Player.weapon;
+        }
+
         boolean isWerewolf = monsterName.toLowerCase().contains("werewolf");
         boolean werewolfFrenzied = false;
         int werewolfFrenzyTurns = 0;
@@ -38,8 +54,7 @@ public class Battle {
             }
             System.out.println(monsterName + " hits you with [" + monsterAtkName + "] for " + ambushDmg + " damage!");
             System.out.println("Current HP: " + Player.hp + "/" + Player.maxHp);
-            System.out.println(
-                    "You quickly draw your " + (Player.weapon.isEmpty() ? "weapon" : Player.weapon) + " to fight back!");
+            System.out.println("You quickly draw your " + weaponUsed + " to fight back!");
             Thread.sleep(1800);
         }
 
@@ -78,7 +93,6 @@ public class Battle {
                     if (currentMonsterHp < 0) {
                         currentMonsterHp = 0;
                     }
-                    String weaponUsed = Player.weapon.isEmpty() ? "weapon" : Player.weapon;
                     System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt
                             + " damage to " + monsterName + "!");
 
@@ -123,7 +137,11 @@ public class Battle {
             } else {
                 System.out.println(monsterName + " uses [" + monsterAtkName + "] (" + currentMonsterDmg + " DMG)!");
 
-                int effectiveDef = Player.def + (isDefending ? (Player.def + 6) : 0);
+                // Defending adds extra defense (your defense + 6) for this turn
+                int effectiveDef = Player.def;
+                if (isDefending) {
+                    effectiveDef = effectiveDef + Player.def + 6;
+                }
                 int damageTaken = Math.max(1, currentMonsterDmg - effectiveDef);
 
                 Player.hp -= damageTaken;
@@ -146,7 +164,11 @@ public class Battle {
                 System.out.println("Recovering HP and restarting this battle...\n");
                 Thread.sleep(2000);
                 currentMonsterHp = monsterHp;
-                golemShields = isDirtGolem ? 2 : 0;
+                if (isDirtGolem) {
+                    golemShields = 2;
+                } else {
+                    golemShields = 0;
+                }
                 werewolfFrenzied = false;
                 werewolfFrenzyTurns = 0;
                 Player.hp = Player.maxHp;
