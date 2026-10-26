@@ -10,4 +10,6 @@ public class Player {
     static int def = 0;
     static int maxDef = 0;
     static int attackBonus = 0;
+    static int lives = 3;
+    static int maxLives = 3;
 }

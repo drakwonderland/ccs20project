@@ -174,18 +174,18 @@ public class CharacterCreation {
 
             switch (Player.role.toLowerCase()) {
                 case "fighter" -> {
-                    System.out.println("[1] Bow (+10 Damage)");
-                    System.out.println("[2] Sword (+10 Damage)");
-                    System.out.println("[3] Crossbow (+12 Damage)");
+                    System.out.println("[1] Bow (+11 Damage, +1 Defense)");
+                    System.out.println("[2] Sword (+10 Damage, +2 Defense)");
+                    System.out.println("[3] Crossbow (+13 Damage, -1 Defense)");
                 }
                 case "tank" -> {
-                    System.out.println("[1] Sword and Shield (+7 Damage, +6 Defense)");
-                    System.out.println("[2] Warhammer (+8 Damage, +4 Defense)");
-                    System.out.println("[3] Polearm (+10 Damage, +3 Defense)");
+                    System.out.println("[1] Sword and Shield (+7 Damage, +4 Defense)");
+                    System.out.println("[2] Warhammer (+8 Damage, +3 Defense)");
+                    System.out.println("[3] Polearm (+10 Damage, +2 Defense)");
                 }
                 case "mage" -> {
-                    System.out.println("[1] Ice Wand (+12 Damage)");
-                    System.out.println("[2] Fire Staff (+12 Damage)");
+                    System.out.println("[1] Ice Wand (+11 Damage, +2 Defense)");
+                    System.out.println("[2] Fire Staff (+14 Damage)");
                 }
             }
 
@@ -198,18 +198,24 @@ public class CharacterCreation {
                     switch (choice.toLowerCase()) {
                         case "1", "bow" -> {
                             Player.weapon = "Bow";
-                            Player.attackBonus += 10;
-                            System.out.println("Bow added to inventory (+10 Damage).");
+                            Player.attackBonus += 11;
+                            Player.def += 1;
+                            Player.maxDef += 1;
+                            System.out.println("Bow added to inventory (+11 Damage, +1 Defense).");
                         }
                         case "2", "sword" -> {
                             Player.weapon = "Sword";
                             Player.attackBonus += 10;
-                            System.out.println("Sword added to inventory (+10 Damage).");
+                            Player.def += 2;
+                            Player.maxDef += 2;
+                            System.out.println("Sword added to inventory (+10 Damage, +2 Defense).");
                         }
                         case "3", "crossbow" -> {
                             Player.weapon = "Crossbow";
-                            Player.attackBonus += 12;
-                            System.out.println("Crossbow added to inventory (+12 Damage).");
+                            Player.attackBonus += 13;
+                            Player.def = Math.max(0, Player.def - 1);
+                            Player.maxDef = Player.def;
+                            System.out.println("Crossbow added to inventory (+13 Damage, -1 Defense).");
                         }
                         default -> {
                             System.out.println("Invalid Option. Try again.");
@@ -223,23 +229,23 @@ public class CharacterCreation {
                         case "1", "sword and shield" -> {
                             Player.weapon = "Sword and Shield";
                             Player.attackBonus += 7;
-                            Player.def += 6;
-                            Player.maxDef += 6;
-                            System.out.println("Sword and Shield added to inventory (+7 Damage, +6 Defense).");
+                            Player.def += 4;
+                            Player.maxDef += 4;
+                            System.out.println("Sword and Shield added to inventory (+7 Damage, +4 Defense).");
                         }
                         case "2", "warhammer" -> {
                             Player.weapon = "Warhammer";
                             Player.attackBonus += 8;
-                            Player.def += 4;
-                            Player.maxDef += 4;
-                            System.out.println("Warhammer added to inventory (+8 Damage, +4 Defense).");
+                            Player.def += 3;
+                            Player.maxDef += 3;
+                            System.out.println("Warhammer added to inventory (+8 Damage, +3 Defense).");
                         }
                         case "3", "polearm" -> {
                             Player.weapon = "Polearm";
                             Player.attackBonus += 10;
-                            Player.def += 3;
-                            Player.maxDef += 3;
-                            System.out.println("Polearm added to inventory (+10 Damage, +3 Defense).");
+                            Player.def += 2;
+                            Player.maxDef += 2;
+                            System.out.println("Polearm added to inventory (+10 Damage, +2 Defense).");
                         }
                         default -> {
                             System.out.println("Invalid Option. Try again.");
@@ -252,13 +258,15 @@ public class CharacterCreation {
                     switch (choice.toLowerCase()) {
                         case "1", "ice wand" -> {
                             Player.weapon = "Ice Wand";
-                            Player.attackBonus += 12;
-                            System.out.println("Ice Wand added to inventory (+12 Damage).");
+                            Player.attackBonus += 11;
+                            Player.def += 2;
+                            Player.maxDef += 2;
+                            System.out.println("Ice Wand added to inventory (+11 Damage, +2 Defense).");
                         }
                         case "2", "fire staff" -> {
                             Player.weapon = "Fire Staff";
-                            Player.attackBonus += 12;
-                            System.out.println("Fire Staff added to inventory (+12 Damage).");
+                            Player.attackBonus += 14;
+                            System.out.println("Fire Staff added to inventory (+14 Damage).");
                         }
                         default -> {
                             System.out.println("Invalid Option. Try again.");

@@ -47,7 +47,8 @@ public class Battle {
         if (isAmbush) {
             System.out.println("\n[AMBUSH!] The " + monsterName + " strikes from behind before you can react!");
             Thread.sleep(1200);
-            int ambushDmg = Math.max(1, monsterBaseDmg - Player.def);
+            int minAmbushDmg = Math.max(1, monsterBaseDmg / 4);
+            int ambushDmg = Math.max(minAmbushDmg, monsterBaseDmg - Player.def);
             Player.hp -= ambushDmg;
             if (Player.hp < 0) {
                 Player.hp = 0;
@@ -134,9 +135,9 @@ public class Battle {
             }
 
             boolean isLester = monsterName.toLowerCase().contains("lester");
-            if (isLester && Math.random() < 0.70) {
+            if (isLester && Math.random() < 0.30) {
                 System.out.println(
-                        monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (70% Miss Chance)");
+                        monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (30% Miss Chance)");
             } else {
                 System.out.println(monsterName + " uses [" + monsterAtkName + "] (" + currentMonsterDmg + " DMG)!");
 
@@ -145,7 +146,8 @@ public class Battle {
                 if (isDefending) {
                     effectiveDef = effectiveDef + Player.def + 6;
                 }
-                int damageTaken = Math.max(1, currentMonsterDmg - effectiveDef);
+                int minDmg = Math.max(1, currentMonsterDmg / 4);
+                int damageTaken = Math.max(minDmg, currentMonsterDmg - effectiveDef);
 
                 Player.hp -= damageTaken;
                 if (Player.hp < 0) {
@@ -161,9 +163,26 @@ public class Battle {
                 System.out.println("The Necromancer siphons life and restores 5 HP!");
             }
 
-            // Player Death / Retry Check
+            // Player Death / Retry Check with 3 Lives System
             if (Player.hp <= 0) {
-                System.out.println("\nYou were defeated by " + monsterName + "!");
+                Player.lives--;
+                System.out.println("\n*************************************************");
+                System.out.println("              YOU HAVE BEEN DEFEATED!            ");
+                System.out.println("*************************************************");
+                System.out.println(monsterName + " delivered a crushing blow!");
+
+                if (Player.lives <= 0) {
+                    System.out.println("Lives remaining: 0 / " + Player.maxLives);
+                    System.out.println("\n=================================================");
+                    System.out.println("                    GAME OVER                    ");
+                    System.out.println("=================================================");
+                    System.out.println("You ran out of lives. Your adventure has ended.");
+                    System.out.println("Thank you for playing!");
+                    System.out.println("=================================================\n");
+                    System.exit(0);
+                }
+
+                System.out.println("Lives remaining: " + Player.lives + " / " + Player.maxLives);
                 System.out.println("Recovering HP and restarting this battle...\n");
                 Thread.sleep(2000);
                 currentMonsterHp = monsterHp;
@@ -214,9 +233,9 @@ public class Battle {
         }
 
         System.out.println("Choose an upgrade:");
-        System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG)");
-        System.out.println("[2] Upgrade Defense (+" + defUp + " DEF)");
-        System.out.println("[3] Upgrade Health (+" + hpUp + " Max HP & Heal)");
+        System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG & +5 Max HP)");
+        System.out.println("[2] Upgrade Defense (+" + defUp + " DEF & +5 Max HP)");
+        System.out.println("[3] Upgrade Health (+" + hpUp + " Max HP & +2 DMG & Heal)");
 
         while (true) {
             System.out.print("Choice (1-3): ");
@@ -225,19 +244,25 @@ public class Battle {
             switch (choice) {
                 case "1", "attack", "atk" -> {
                     Player.attackBonus += atkUp;
-                    System.out.println(
-                            "Weapon Attack increased by +" + atkUp + "! (Total Attack Bonus: +" + Player.attackBonus + ")");
+                    Player.maxHp += 5;
+                    Player.hp = Player.maxHp;
+                    System.out.println("Weapon Attack increased by +" + atkUp + " and Max HP increased by +5! (Total Attack: +"
+                            + Player.attackBonus + " | Max HP: " + Player.maxHp + ")");
                 }
                 case "2", "defense", "def" -> {
                     Player.def += defUp;
                     Player.maxDef += defUp;
-                    System.out.println("Defense increased by +" + defUp + "! (Total DEF: " + Player.def + ")");
+                    Player.maxHp += 5;
+                    Player.hp = Player.maxHp;
+                    System.out.println("Defense increased by +" + defUp + " and Max HP increased by +5! (Total DEF: "
+                            + Player.def + " | Max HP: " + Player.maxHp + ")");
                 }
                 case "3", "health", "hp" -> {
                     Player.maxHp += hpUp;
+                    Player.attackBonus += 2;
                     Player.hp = Player.maxHp;
-                    System.out.println(
-                            "Max HP increased by +" + hpUp + "! (Current HP: " + Player.hp + "/" + Player.maxHp + ")");
+                    System.out.println("Max HP increased by +" + hpUp + " and Attack increased by +2! (Current HP: "
+                            + Player.hp + "/" + Player.maxHp + ")");
                 }
                 default -> {
                     System.out.println("Invalid choice. Please enter 1, 2, or 3.");
@@ -328,7 +353,7 @@ public class Battle {
      * Displays the player's health bar and defense stats.
      */
     public static void healthBar() {
-        System.out.println("  " + Player.name + " [" + Player.role + "]  (DEF: " + Player.def + ")");
+        System.out.println("  " + Player.name + " [" + Player.role + "]  (DEF: " + Player.def + " | Lives: " + Player.lives + "/" + Player.maxLives + ")");
         System.out.println("  HP  " + getHealthBar(Player.hp, Player.maxHp, 20));
     }
 

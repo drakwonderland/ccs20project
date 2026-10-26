@@ -264,7 +264,7 @@ public class Adventure {
 
         // Balanced to 350 HP for smooth demo pacing (change 350 to 999 if you want the
         // meme number)
-        Battle.executeBattle("Sir Lester (The Boss)", 350, "Boss Slam", 22, false, false);
+        Battle.executeBattle("Sir Lester (The Boss)", 350, "Boss Slam", 25, false, false);
 
         System.out.println("\n[SHORT REST]");
         System.out.println("Sir Lester finally falls! Everyone collapses on the ground, laughing");
