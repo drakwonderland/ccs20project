@@ -31,7 +31,7 @@ public class Battle {
             weaponUsed = Player.weapon;
         }
 
-        boolean isWerewolf = monsterName.toLowerCase().contains("werewolf");
+        boolean isWerewolf = monsterName.equalsIgnoreCase("Werewolf");
         boolean werewolfFrenzied = false;
         int werewolfFrenzyTurns = 0;
 
@@ -168,7 +168,7 @@ public class Battle {
                 werewolfFrenzyTurns--;
             }
 
-            boolean isLester = monsterName.toLowerCase().contains("lester");
+            boolean isLester = monsterName.equalsIgnoreCase("Sir Lester (The Boss)");
             if (isLester && Math.random() < 0.30) {
                 System.out.println(
                         monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (30% Miss Chance)");
@@ -234,11 +234,12 @@ public class Battle {
 
     // Calculates attack damage according to role + level up bonus
     public static int getPlayerAttackDamage() {
-        int baseDmg = switch (Player.role.toLowerCase()) {
-            case "mage" -> 6;
-            case "tank" -> 4;
-            default -> 5; // Fighter
-        };
+        int baseDmg;
+        switch (Player.role.toLowerCase()) {
+            case "mage" -> baseDmg = 6;
+            case "tank" -> baseDmg = 4;
+            default -> baseDmg = 5; // Fighter
+        }
         return baseDmg + Player.attackBonus;
     }
 
@@ -266,7 +267,12 @@ public class Battle {
             }
         }
 
-        int hybridAtk = Player.role.equalsIgnoreCase("mage") ? 3 : 2;
+        int hybridAtk;
+        if (Player.role.equalsIgnoreCase("mage")) {
+            hybridAtk = 3;
+        } else {
+            hybridAtk = 2;
+        }
 
         System.out.println("Choose an upgrade:");
         System.out.println("[1] Upgrade Weapon Attack (+" + atkUp + " DMG & +5 Max HP & Full Heal)");
@@ -314,11 +320,12 @@ public class Battle {
         System.out.println("\n=================================================");
         System.out.println("       " + diff.toUpperCase() + " DIFFICULTY CLEARED MILESTONE!    ");
         System.out.println("=================================================");
-        int hpUp = switch (Player.role.toLowerCase()) {
-            case "mage" -> 35;
-            case "tank" -> 55;
-            default -> 45; // Fighter
-        };
+        int hpUp;
+        switch (Player.role.toLowerCase()) {
+            case "mage" -> hpUp = 35;
+            case "tank" -> hpUp = 55;
+            default -> hpUp = 45; // Fighter
+        }
 
         System.out.println("Choose Milestone Bonus:");
         System.out.println("[1] Massive Vitality (+" + hpUp + " Max HP & Full Heal)");
@@ -358,14 +365,7 @@ public class Battle {
     // REUSABLE VISUAL HEALTH BAR METHODS
     // ==========================================
 
-    /**
-     * Generates a reusable visual health bar string using solid block characters.
-     *
-     * @param currentHp Current health points
-     * @param maxHp     Maximum health points
-     * @param barLength Number of blocks in the bar
-     * @return Formatted string like "[████████░░] 80/100 HP"
-     */
+    // Generates a visual health bar string using solid block characters
     public static String getHealthBar(int currentHp, int maxHp, int barLength) {
         if (maxHp <= 0) {
             maxHp = 1;
@@ -377,26 +377,31 @@ public class Battle {
             currentHp = maxHp;
         }
 
-        int filled = (int) Math.round(((double) currentHp / maxHp) * barLength);
+        int filled = (currentHp * barLength) / maxHp;
         if (currentHp > 0 && filled == 0) {
             filled = 1; // Keep 1 pip visible if still alive
         }
         int empty = barLength - filled;
 
-        return "[" + "█".repeat(filled) + "░".repeat(empty) + "] " + currentHp + "/" + maxHp + " HP";
+        String bar = "[";
+        for (int i = 0; i < filled; i++) {
+            bar += "█";
+        }
+        for (int i = 0; i < empty; i++) {
+            bar += "░";
+        }
+        bar += "] " + currentHp + "/" + maxHp + " HP";
+
+        return bar;
     }
 
-    /**
-     * Displays the player's health bar and defense stats.
-     */
+    // Displays the player's health bar and defense stats
     public static void healthBar() {
         System.out.println("  " + Player.name + " [" + Player.role + "]  (DEF: " + Player.def + " | Lives: " + Player.lives + "/" + Player.maxLives + ")");
         System.out.println("  HP  " + getHealthBar(Player.hp, Player.maxHp, 20));
     }
 
-    /**
-     * Displays an enemy's health bar.
-     */
+    // Displays an enemy's health bar
     public static void enemyHealthBar(String enemyName, int currentHp, int maxHp) {
         System.out.println("  " + enemyName);
         System.out.println("  HP  " + getHealthBar(currentHp, maxHp, 20));

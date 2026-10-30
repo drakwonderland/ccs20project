@@ -4,7 +4,7 @@ import java.util.Scanner;
 // This file only lists the order of the game. The actual work is in the other classes.
 public class Main {
     // one shared Scanner for the whole game (other classes use Main.scanner)
-    static final Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws InterruptedException {
         GameText.welcomeBanner();
