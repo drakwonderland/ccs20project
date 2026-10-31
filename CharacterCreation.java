@@ -144,12 +144,10 @@ public class CharacterCreation {
             System.out.println("[3] Change Gender");
             System.out.println("[4] Change Name");
             System.out.print("Enter your choice (1-4): ");
-            String choice = Main.scanner.nextLine().trim();
-
-            Clear.clearScreen(2);
+            String choice = Main.scanner.nextLine().trim().toLowerCase();
 
             switch (choice) {
-                case "1" -> {
+                case "1", "yes", "y" -> {
                     System.out.println("\nCharacter confirmed! Moving to the next scene...\n");
                     return;
                 }
