@@ -21,6 +21,7 @@ public class Battle {
             case "werewolf" -> Sprites.werewolf();
             case "red dragon", "dragon" -> Sprites.redDragon();
             case "drow" -> Sprites.drow();
+            case "sir lester (the boss)", "sir lester", "boss" -> Sprites.sirLester();
             default -> {}
         }
     }

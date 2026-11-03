@@ -502,4 +502,38 @@ public class Sprites {
         System.out.println("                        +%@@@@#   *%@@@@+                        ");
     }
 
+    // Sir Lester (The Boss) sprite
+    public static void sirLester() {
+        System.out.println("              %#              ");
+        System.out.println("            @@@@@             ");
+        System.out.println("            @@@@@#            ");
+        System.out.println("             @@@@             ");
+        System.out.println("            %@@@@@@:          ");
+        System.out.println("        :@@@@@@@@@@@@@        ");
+        System.out.println("        @@@@@@@@@@@@@@        ");
+        System.out.println("        @@@@@@@@@@@@@@        ");
+        System.out.println("        @@@@@@@@@@@@@-        ");
+        System.out.println("         +@@@@@@@@@@*         ");
+        System.out.println("          @@@@@@@@@@          ");
+        System.out.println("          @@@@@@@@@@%         ");
+        System.out.println("          @@@@@@@@@@          ");
+        System.out.println("         =@@@@@@@@@@-         ");
+        System.out.println("         =@@@@@@@@@@=         ");
+        System.out.println("         =@@@@@@@@@@=         ");
+        System.out.println("         =@@@@. @@@@=         ");
+        System.out.println("         .@@@@  @@@@=         ");
+        System.out.println("          @@@@  .@@@          ");
+        System.out.println("          @@@.   @@@          ");
+        System.out.println("         .@@@    @@@%         ");
+        System.out.println("          @@@    @@@@         ");
+        System.out.println("          @@@    @@@@         ");
+        System.out.println("         @@@@    @@@@         ");
+        System.out.println("          @@:    :@@#         ");
+        System.out.println("        .@@@      @@@-        ");
+    }
+
+    public static void boss() {
+        sirLester();
+    }
+
 }
