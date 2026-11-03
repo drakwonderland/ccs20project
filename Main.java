@@ -48,5 +48,8 @@ public class Main {
         Adventure.startAdventure();
 
         scanner.close();
+         {
+
+        }
     }
 }
