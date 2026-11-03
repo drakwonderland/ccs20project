@@ -30,9 +30,6 @@ public class Main {
         CharacterCreation.inputName();
         Clear.clearScreen(2);
 
-        GameText.roleSelectionComplete();
-        Clear.clearScreen(3);
-
         CharacterCreation.confirmCharacter();
         Clear.clearScreen(2);
 

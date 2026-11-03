@@ -20,7 +20,6 @@ public class Adventure {
         System.out.println("untouched. " + Player.name + " realizes the slime must be stopped before");
         System.out.println("things get worse!");
         System.out.println("----------------------------------------------------------------------");
-        Sprites.slime();
         Pause.pause();
 
         // Slime ambushes the player from behind before the player can act
@@ -52,7 +51,6 @@ public class Adventure {
         System.out.println(Player.name + " decides to fight. If the goblin is defeated, it will no");
         System.out.println("longer be a problem for the village.");
         System.out.println("----------------------------------------------------------------------");
-        Sprites.goblin();
         Pause.pause();
 
         Battle.executeBattle("Goblin", 15, "Axe Swing", 5, false, false);
@@ -79,7 +77,6 @@ public class Adventure {
         System.out.println("Then a zombie comes out of the darkness and tries to bite!");
         System.out.println("Startled, " + Player.name + " fights back, determined to make it home.");
         System.out.println("----------------------------------------------------------------------");
-        Sprites.zombie();
         Pause.pause();
 
         Battle.executeBattle("Zombie", 25, "Bite", 7, false, false);
@@ -100,7 +97,6 @@ public class Adventure {
         System.out.println("Just as " + Player.name + " starts drinking, a deep hiss echoes nearby.");
         System.out.println("A giant serpent is right there, ready to strike!");
         System.out.println("----------------------------------------------------------------------");
-        Sprites.serpent();
         Pause.pause();
 
         Battle.executeBattle("Serpent", 50, "Coil", 10, false, false);
@@ -198,7 +194,6 @@ public class Adventure {
         System.out.println();
         System.out.println("The two clash in a fierce duel of dark sorcery and resolve!");
         System.out.println("----------------------------------------------------------------------");
-        Sprites.skeleton();
         Pause.pause();
 
         // Necromancer has the Life Siphon heal enabled

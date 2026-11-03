@@ -8,7 +8,24 @@ public class Battle {
         executeBattle(monsterName, monsterHp, monsterAtkName, monsterBaseDmg, isDirtGolem, isNecro, false);
     }
 
-    // Main turn-based combat engine
+    // Displays the ASCII sprite for monsters that have dedicated art
+    public static void displayMonsterSprite(String monsterName) {
+        switch (monsterName.toLowerCase()) {
+            case "slime" -> Sprites.slime();
+            case "goblin" -> Sprites.goblin();
+            case "zombie" -> Sprites.zombie();
+            case "serpent" -> Sprites.serpent();
+            case "necromancer" -> Sprites.necromancer();
+            case "skeleton" -> Sprites.skeleton();
+            case "dirt golem", "golem" -> Sprites.dirtGolem();
+            case "werewolf" -> Sprites.werewolf();
+            case "red dragon", "dragon" -> Sprites.redDragon();
+            case "drow" -> Sprites.drow();
+            default -> {}
+        }
+    }
+
+    // Main turn-based combat engine with turn-by-turn screen refresh
     public static void executeBattle(String monsterName, int monsterHp, String monsterAtkName,
             int monsterBaseDmg, boolean isDirtGolem, boolean isNecro, boolean isAmbush)
             throws InterruptedException {
@@ -38,8 +55,14 @@ public class Battle {
         // Always start battle with full HP
         Player.hp = Player.maxHp;
 
+        String combatLog = "";
+
+        // Initial encounter screen
+        Clear.clearScreen();
+        displayMonsterSprite(monsterName);
+        enemyHealthBar(monsterName, currentMonsterHp, monsterHp);
         System.out.println("\n-------------------------------------------------");
-        System.out.println("A wild " + monsterName + " appeared! (HP: " + monsterHp + ")");
+        System.out.println("A wild " + monsterName + " appeared!");
         System.out.println("-------------------------------------------------");
         Thread.sleep(1500);
 
@@ -54,7 +77,6 @@ public class Battle {
                 Player.hp = 0;
             }
             System.out.println(monsterName + " hits you with [" + monsterAtkName + "] for " + ambushDmg + " damage!");
-            System.out.println("Current HP: " + Player.hp + "/" + Player.maxHp);
 
             // Ambush lethal check
             if (Player.hp <= 0) {
@@ -82,25 +104,36 @@ public class Battle {
             }
 
             System.out.println("You quickly draw your " + weaponUsed + " to fight back!");
-            Thread.sleep(1800);
+            Thread.sleep(1500);
+
+            combatLog = ">> [AMBUSH!] " + monsterName + " struck with [" + monsterAtkName + "] for " + ambushDmg + " damage!";
         }
 
         while (Player.hp > 0 && currentMonsterHp > 0) {
             boolean isDefending = false;
 
-            // Combat HUD with aligned visual health bars
+            // Turn-by-turn screen refresh: sprite remains at top with dynamically updated HP bar
+            Clear.clearScreen();
+            displayMonsterSprite(monsterName);
+            enemyHealthBar(monsterName, currentMonsterHp, monsterHp);
+
+            // Display latest turn action log
+            if (!combatLog.isEmpty()) {
+                System.out.println("\n" + combatLog);
+            }
+
+            // Combat HUD with player info and action choices
             System.out.println("\n=================================================");
             System.out.println("                   COMBAT HUD                    ");
             System.out.println("=================================================");
-            enemyHealthBar(monsterName, currentMonsterHp, monsterHp);
-            System.out.println("  -----------------------------------------------");
             healthBar();
+            System.out.println("  -----------------------------------------------");
+            System.out.println("  Choose action: [1] Attack  [2] Defend");
             System.out.println("=================================================");
 
             // Input validation loop so typos don't forfeit the player's turn
             String action;
             while (true) {
-                System.out.println("Choose action: [1] Attack  [2] Defend");
                 System.out.print("Action: ");
                 action = Main.scanner.nextLine().trim();
                 if (action.equals("1") || action.equalsIgnoreCase("attack")
@@ -112,6 +145,8 @@ public class Battle {
                 System.out.println("Invalid action! Please enter 1 to Attack or 2 to Defend.\n");
             }
 
+            StringBuilder turnLog = new StringBuilder();
+
             // Player Turn
             boolean isAttack = action.equals("1") || action.equalsIgnoreCase("attack")
                     || action.equalsIgnoreCase("atk") || action.equalsIgnoreCase("a");
@@ -120,62 +155,57 @@ public class Battle {
 
                 if (golemShields > 0) {
                     golemShields--;
-                    System.out.println(
-                            "The Dirt Golem's stone shield BLOCKED your attack! (Shields left: " + golemShields + ")");
+                    turnLog.append(">> The Dirt Golem's stone shield BLOCKED your attack! (Shields left: ").append(golemShields).append(")\n");
                 } else {
                     currentMonsterHp -= damageDealt;
                     if (currentMonsterHp < 0) {
                         currentMonsterHp = 0;
                     }
-                    System.out.println("You attacked with your " + weaponUsed + " and dealt " + damageDealt
-                            + " damage to " + monsterName + "!");
+                    turnLog.append(">> You attacked with your ").append(weaponUsed).append(" and dealt ").append(damageDealt)
+                            .append(" damage to ").append(monsterName).append("!\n");
 
                     // Werewolf Frenzy trigger when HP falls to or below 50%
                     if (isWerewolf && !werewolfFrenzied && currentMonsterHp > 0
                             && currentMonsterHp <= (monsterHp / 2)) {
                         werewolfFrenzied = true;
                         werewolfFrenzyTurns = 3;
-                        System.out.println("\n[FRENZY!] The Werewolf's HP dropped below 50% (" + currentMonsterHp + "/"
-                                + monsterHp + ")!");
-                        System.out.println("It howls in rage and enters a FRENZY (+7 Attack for 3 rounds)!");
+                        turnLog.append(">> [FRENZY!] The Werewolf's HP dropped below 50%!\n")
+                               .append(">> It howls in rage and enters a FRENZY (+7 Attack for 3 rounds)!\n");
                     }
                 }
             } else {
                 isDefending = true;
                 if (golemShields > 0) {
-                    System.out.println("You braced yourself! (Note: Dirt Golem shields only shatter when you ATTACK!)");
+                    turnLog.append(">> You braced yourself! (Note: Dirt Golem shields only shatter when you ATTACK!)\n");
                 } else {
-                    System.out.println("You braced yourself! (Incoming damage reduced)");
+                    turnLog.append(">> You braced yourself! (Incoming damage reduced)\n");
                 }
             }
 
             // Check if Monster Died
             if (currentMonsterHp <= 0) {
+                Clear.clearScreen();
+                displayMonsterSprite(monsterName);
+                enemyHealthBar(monsterName, 0, monsterHp);
+                System.out.println("\n" + turnLog.toString().trim());
                 System.out.println("\n*** " + monsterName.toUpperCase() + " DEFEATED! ***");
                 Thread.sleep(1500);
                 return;
             }
 
             // Monster Turn
-            Thread.sleep(1000);
-            System.out.println("\n--- Enemy Turn ---");
-
             int currentMonsterDmg = monsterBaseDmg;
             if (isWerewolf && werewolfFrenzyTurns > 0) {
                 currentMonsterDmg += 7;
-                System.out.println(">> FRENZY ACTIVE: " + monsterName + " gains +7 ATK! (" + werewolfFrenzyTurns
-                        + " rounds left) <<");
+                turnLog.append(">> FRENZY ACTIVE: ").append(monsterName).append(" gains +7 ATK! (").append(werewolfFrenzyTurns)
+                       .append(" rounds left) <<\n");
                 werewolfFrenzyTurns--;
             }
 
             boolean isLester = monsterName.equalsIgnoreCase("Sir Lester (The Boss)");
             if (isLester && Math.random() < 0.30) {
-                System.out.println(
-                        monsterName + " swings wildly with [" + monsterAtkName + "]... but MISSES! (30% Miss Chance)");
+                turnLog.append(">> ").append(monsterName).append(" swings wildly with [").append(monsterAtkName).append("]... but MISSES! (30% Miss Chance)\n");
             } else {
-                System.out.println(monsterName + " uses [" + monsterAtkName + "] (" + currentMonsterDmg + " DMG)!");
-
-                // Defending adds extra defense (your defense + 6) for this turn
                 int effectiveDef = Player.def;
                 if (isDefending) {
                     effectiveDef = effectiveDef + Player.def + 6;
@@ -187,18 +217,22 @@ public class Battle {
                 if (Player.hp < 0) {
                     Player.hp = 0;
                 }
-                System.out.println(
-                        "You took " + damageTaken + " damage! (Current HP: " + Player.hp + "/" + Player.maxHp + ")");
+                turnLog.append(">> ").append(monsterName).append(" uses [").append(monsterAtkName).append("] (").append(currentMonsterDmg).append(" DMG)!\n")
+                       .append(">> You took ").append(damageTaken).append(" damage!\n");
             }
 
             // Necromancer Life Siphon mechanic
             if (isNecro && Player.hp > 0) {
                 currentMonsterHp = Math.min(monsterHp, currentMonsterHp + 5);
-                System.out.println("The Necromancer siphons life and restores 5 HP!");
+                turnLog.append(">> The Necromancer siphons life and restores 5 HP!\n");
             }
 
             // Player Death / Retry Check with 3 Lives System
             if (Player.hp <= 0) {
+                Clear.clearScreen();
+                displayMonsterSprite(monsterName);
+                enemyHealthBar(monsterName, currentMonsterHp, monsterHp);
+                System.out.println("\n" + turnLog.toString().trim());
                 Player.lives--;
                 System.out.println("\n*************************************************");
                 System.out.println("              YOU HAVE BEEN DEFEATED!            ");
@@ -228,7 +262,12 @@ public class Battle {
                 werewolfFrenzied = false;
                 werewolfFrenzyTurns = 0;
                 Player.hp = Player.maxHp;
+                combatLog = ">> Recovered and restarted battle against " + monsterName + "!";
+                continue;
             }
+
+            combatLog = turnLog.toString().trim();
+            Thread.sleep(1000);
         }
     }
 
@@ -303,8 +342,7 @@ public class Battle {
                     Player.maxHp += hpUp;
                     Player.attackBonus += hybridAtk;
                     Player.hp = Player.maxHp;
-                    System.out.println("Max HP increased by +" + hpUp + " and Attack increased by +" + hybridAtk + "! (Current HP: "
-                            + Player.hp + "/" + Player.maxHp + ")");
+                    System.out.println("Max HP increased by +" + hpUp + " and Attack increased by +" + hybridAtk + "!");
                 }
                 default -> {
                     System.out.println("Invalid choice. Please enter 1, 2, or 3.");
@@ -390,7 +428,7 @@ public class Battle {
         for (int i = 0; i < empty; i++) {
             bar += "░";
         }
-        bar += "] " + currentHp + "/" + maxHp + " HP";
+        bar += "]";
 
         return bar;
     }
@@ -401,9 +439,12 @@ public class Battle {
         System.out.println("  HP  " + getHealthBar(Player.hp, Player.maxHp, 20));
     }
 
-    // Displays an enemy's health bar
+    // Displays an enemy's health bar on a single line
     public static void enemyHealthBar(String enemyName, int currentHp, int maxHp) {
-        System.out.println("  " + enemyName);
-        System.out.println("  HP  " + getHealthBar(currentHp, maxHp, 20));
+        System.out.println("  " + enemyName + "  HP  " + getHealthBar(currentHp, maxHp, 20));
+    }
+
+    public static void enemyHealthBar(String enemyName, int maxHp) {
+        enemyHealthBar(enemyName, maxHp, maxHp);
     }
 }

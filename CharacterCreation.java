@@ -199,6 +199,7 @@ public class CharacterCreation {
                             Player.attackBonus += 11;
                             Player.def += 1;
                             Player.maxDef += 1;
+                            Sprites.bow();
                             System.out.println("Bow added to inventory (+11 Damage, +1 Defense).");
                         }
                         case "2", "sword" -> {
@@ -206,6 +207,7 @@ public class CharacterCreation {
                             Player.attackBonus += 10;
                             Player.def += 2;
                             Player.maxDef += 2;
+                            Sprites.sword();
                             System.out.println("Sword added to inventory (+10 Damage, +2 Defense).");
                         }
                         case "3", "crossbow" -> {
@@ -213,6 +215,7 @@ public class CharacterCreation {
                             Player.attackBonus += 13;
                             Player.def = Math.max(0, Player.def - 1);
                             Player.maxDef = Player.def;
+                            Sprites.crossbow();
                             System.out.println("Crossbow added to inventory (+13 Damage, -1 Defense).");
                         }
                         default -> {
@@ -229,6 +232,7 @@ public class CharacterCreation {
                             Player.attackBonus += 7;
                             Player.def += 4;
                             Player.maxDef += 4;
+                            Sprites.shield();
                             System.out.println("Sword and Shield added to inventory (+7 Damage, +4 Defense).");
                         }
                         case "2", "warhammer" -> {
@@ -236,6 +240,7 @@ public class CharacterCreation {
                             Player.attackBonus += 8;
                             Player.def += 3;
                             Player.maxDef += 3;
+                            Sprites.warhammer();
                             System.out.println("Warhammer added to inventory (+8 Damage, +3 Defense).");
                         }
                         case "3", "polearm" -> {
@@ -259,11 +264,13 @@ public class CharacterCreation {
                             Player.attackBonus += 11;
                             Player.def += 2;
                             Player.maxDef += 2;
+                            Sprites.iceWand();
                             System.out.println("Ice Wand added to inventory (+11 Damage, +2 Defense).");
                         }
                         case "2", "fire staff" -> {
                             Player.weapon = "Fire Staff";
                             Player.attackBonus += 14;
+                            Sprites.fireStaff();
                             System.out.println("Fire Staff added to inventory (+14 Damage).");
                         }
                         default -> {
