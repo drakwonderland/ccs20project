@@ -6,7 +6,7 @@ public class GameText {
         System.out.println("=================================================");
         System.out.println("         GROUP 7 - BSCS 1-A RPG ADVENTURE        ");
         System.out.println("=================================================");
-        System.out.println("Welcome to the text-based adventure!    \n");
+        IO.println("Welcome to the text-based adventure!    \n");
     }
 
     // 1. Tree house story method
